@@ -3,7 +3,6 @@ import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RouteTransition from "@/components/RouteTransition";
-import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -48,7 +47,6 @@ export default function RootLayout({
           <RouteTransition>{children}</RouteTransition>
         </main>
         <Footer />
-        <CustomCursor />
       </body>
     </html>
   );
