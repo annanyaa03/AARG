@@ -83,35 +83,7 @@ export default function RouteTransition({ children }: RouteTransitionProps) {
         </div>
       )}
 
-      {/* 2. Persistent Side Scroll-Progress HUD Bar */}
-      <div className="fixed left-4 top-1/4 bottom-1/4 w-12 hidden md:flex flex-col items-center justify-between z-30 font-mono text-[9px] text-secondary-accent/40 pointer-events-none border-l border-secondary-accent/10 pl-2">
-        <span className="text-primary-accent font-bold">ALT_PCT</span>
-        
-        {/* Track Line & Indicator */}
-        <div className="relative flex-1 w-full my-4 flex justify-center">
-          {/* Scroll progress slider track */}
-          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-secondary-accent/10" />
-          
-          {/* Progress fill */}
-          <motion.div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] bg-primary-accent"
-            style={{ height: `${scrollPct}%`, transformOrigin: "top" }}
-          />
-          
-          {/* Telemetry scrolling text indicator */}
-          <motion.div
-            className="absolute left-0 right-0 text-center font-bold text-primary-accent bg-bg-base/90 py-0.5 border border-primary-accent/25 rounded-none px-1"
-            style={{ top: `calc(${scrollPct}% - 10px)` }}
-          >
-            {scrollPct}%
-          </motion.div>
-        </div>
 
-        <div className="flex flex-col items-center gap-0.5 font-bold">
-          <span>ALT_ELEV</span>
-          <span className="text-secondary-accent/70">{formattedCoords}</span>
-        </div>
-      </div>
 
       {/* 3. Page Route Transition Animates */}
       <AnimatePresence mode="wait">
