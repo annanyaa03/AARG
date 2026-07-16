@@ -3,7 +3,8 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Compass, Users, Calendar, Trophy, Cpu } from "lucide-react";
+import { ChevronRight, Users, Calendar, Trophy, Cpu } from "lucide-react";
+import FlightTelemetry from "@/components/FlightTelemetry";
 import { siteConfig } from "@/content/site";
 import { vehicles } from "@/content/vehicles";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -100,65 +101,12 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Hero Right HUD Console Mock */}
-          <motion.div 
+          {/* Hero Right — Dynamic Flight Telemetry HUD */}
+          <motion.div
             style={shouldReduceMotion ? {} : { y: yConsole, opacity: opacityHero }}
             className="lg:col-span-5 hidden lg:block"
           >
-            <div className="border border-secondary-accent/20 bg-surface/80 p-6 relative font-mono text-[10px] text-secondary-accent/70 flex flex-col gap-4">
-              <div className="hud-corner hud-corner-tl" />
-              <div className="hud-corner hud-corner-tr" />
-              <div className="hud-corner hud-corner-bl" />
-              <div className="hud-corner hud-corner-br" />
-
-              {/* Console Header */}
-              <div className="flex justify-between border-b border-secondary-accent/15 pb-2 text-primary-accent font-bold">
-                <span>{"/// TELEMETRY_FEED_01"}</span>
-                <span className="animate-pulse">● RECORDING</span>
-              </div>
-
-              {/* Telemetry data grid */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col border-r border-secondary-accent/10 pr-2">
-                  <span className="text-secondary-accent/40 uppercase font-semibold">AIRSPEED</span>
-                  <span className="text-base text-secondary-accent font-bold">
-                    <DecryptText text="14.5 m/s" delay={0.2} />
-                  </span>
-                </div>
-                <div className="flex flex-col pl-2">
-                  <span className="text-secondary-accent/40 uppercase font-semibold">{"ALTITUDE (AGL)"}</span>
-                  <span className="text-base text-secondary-accent font-bold">
-                    <DecryptText text="120.0 m" delay={0.4} />
-                  </span>
-                </div>
-                <div className="flex flex-col border-r border-secondary-accent/10 pr-2">
-                  <span className="text-secondary-accent/40 uppercase font-semibold">{"PITCH // ROLL"}</span>
-                  <span className="text-base text-secondary-accent font-bold">
-                    <DecryptText text="2.4° // -0.8°" delay={0.6} />
-                  </span>
-                </div>
-                <div className="flex flex-col pl-2">
-                  <span className="text-secondary-accent/40 uppercase font-semibold">{"GPS SAT COUNT"}</span>
-                  <span className="text-base text-secondary-accent font-bold">
-                    <DecryptText text="18 (FIXED)" delay={0.8} />
-                  </span>
-                </div>
-              </div>
-
-              {/* Interactive graph representation */}
-              <div className="h-16 border border-secondary-accent/10 relative overflow-hidden flex items-end">
-                <div className="absolute inset-0 bg-primary-accent/5" />
-                <svg className="w-full h-10 stroke-primary-accent fill-transparent stroke-[1.5]" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0,5 Q10,1 20,8 T40,2 T60,9 T80,4 L100,5" />
-                </svg>
-              </div>
-
-              {/* Status footer */}
-              <div className="border-t border-secondary-accent/15 pt-2 flex justify-between uppercase text-[8px]">
-                <span className="flex items-center gap-1"><Compass className="w-3 h-3 text-primary-accent" /> AUTOPILOT ACTIVE</span>
-                <span>COMMS_OK [100%]</span>
-              </div>
-            </div>
+            <FlightTelemetry />
           </motion.div>
         </div>
       </section>
