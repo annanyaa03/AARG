@@ -81,16 +81,16 @@ export default function Home() {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 mt-2">
               <Link
-                href="/domains"
+                href="/join"
                 className="font-mono text-xs font-bold border border-primary-accent bg-primary-accent text-white px-6 py-3.5 hover:bg-transparent hover:text-primary-accent transition-all duration-250 focus-hud rounded-none flex items-center gap-2"
               >
-                DEPLOY_FLIGHT_SPEC <ChevronRight className="w-4 h-4" />
+                JOIN_SQUADRON // REC_2026 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/join"
+                href="/about"
                 className="font-mono text-xs font-bold border border-secondary-accent/30 text-secondary-accent bg-transparent px-6 py-3.5 hover:border-primary-accent hover:text-primary-accent transition-all duration-250 focus-hud rounded-none"
               >
-                JOIN_SQUADRON // REC_2026
+                ABOUT_US // BRIEFING
               </Link>
             </div>
           </motion.div>
@@ -332,13 +332,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            <Link
-              href="/domains"
-              className="font-mono text-xs font-bold text-center lg:text-left text-primary-accent hover:text-secondary-accent transition-colors duration-200 focus-hud mt-2 flex items-center gap-1.5 justify-center lg:justify-start"
-            >
-              {"// VIEW ALL VEHICLES & DETAILED DOMAINS"} <ChevronRight className="w-4 h-4" />
-            </Link>
           </div>
 
           {/* Photo frame (Right) */}

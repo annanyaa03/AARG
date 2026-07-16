@@ -294,17 +294,6 @@ export default function DomainRadar() {
                     ))}
                   </div>
                 )}
-
-                {/* Bottom link */}
-                <div className="mt-6 pt-2 flex justify-start">
-                  <Link
-                    href="/domains"
-                    className="font-mono text-xs font-bold text-primary-accent hover:text-secondary-accent transition-colors duration-250 flex items-center gap-1.5 focus-hud rounded-none"
-                  >
-                    // EXPLORE FULL DOMAIN BRIEFING{" "}
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
               </div>
             </motion.div>
           </AnimatePresence>

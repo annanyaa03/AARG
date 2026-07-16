@@ -38,7 +38,6 @@ export default function Footer() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Team", href: "/team" },
-    { name: "Domains", href: "/domains" },
     { name: "Achievements", href: "/achievements" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Gallery", href: "/gallery" },
