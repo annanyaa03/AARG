@@ -13,7 +13,6 @@ import SponsorMarquee from "@/components/SponsorMarquee";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 import HeroBackground from "@/components/HeroBackground";
-import DomainRadar from "@/components/DomainRadar";
 
 
 export default function Home() {
@@ -274,27 +273,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3.5: TECHNICAL DOMAINS / INTERACTIVE SYSTEMS MAP */}
-      <section className="py-16 md:py-24 bg-bg-base relative z-10 px-4 md:px-8 border-b border-secondary-accent/10">
-        {/* Faint HUD crosshair grid overlay */}
-        <div className="absolute inset-0 hud-grid pointer-events-none opacity-20" />
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="mb-12">
-            <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
-              <span className="inline-block w-1.5 h-1.5 bg-primary-accent" />
-              TECHNICAL_DOMAINS // INTERACTIVE_SYSTEMS_MAP
-            </span>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase mt-2">
-              Explore the Engineering Divisions
-            </h2>
-          </div>
-
-          <ScrollReveal>
-            <DomainRadar />
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* SECTION 4: FEATURED UAV PROJECT TEASER */}
       <section className="py-16 md:py-24 bg-surface border-y border-secondary-accent/15 relative z-10 px-4 md:px-8">
