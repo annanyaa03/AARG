@@ -8,8 +8,6 @@ import HeroSchematic from "@/components/HeroSchematic";
 import { siteConfig } from "@/content/site";
 import { vehicles } from "@/content/vehicles";
 import ScrollReveal from "@/components/ScrollReveal";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import SponsorMarquee from "@/components/SponsorMarquee";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 import HeroBackground from "@/components/HeroBackground";
@@ -328,41 +326,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: ALUMNI SPOTLIGHT / TESTIMONIAL */}
-      <section className="py-16 md:py-24 bg-bg-base relative z-10 px-4 md:px-8">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6">
-          <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 bg-primary-accent" />
-            FOUNDATION_TESTIMONIAL
-          </span>
-          
-          <div className="relative p-6 md:p-10 border border-secondary-accent/10 bg-surface-low">
-            
-            <p className="font-display text-lg md:text-xl font-medium italic text-secondary-accent/90 leading-relaxed font-sans">
-              {"\"AARG was where I learned to translate aerospace textbooks into real-world autonomous aircraft. It builds a rare technical confidence and systems discipline that shapes careers in aerospace.\""}
-            </p>
-            
-            <div className="mt-6 font-mono text-xs">
-              <span className="text-primary-accent font-bold">[ALUMNI PRESIDENT NAME]</span>
-              <span className="text-secondary-accent/50 block mt-1">Former Team President // Class of 2024</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* SECTION 6: SPONSOR MARQUEE */}
-      <section className="bg-bg-base relative z-10">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center pb-8">
-          <span className="font-mono text-xs text-primary-accent tracking-widest uppercase block mb-4 flex items-center justify-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 bg-primary-accent" />
-            TRUSTED_BY_INDUSTRY_LEADERS
-          </span>
-          <h3 className="font-display text-xl font-bold text-secondary-accent uppercase tracking-wider">
-            OUR SPONSORS & CORPORATE ENABLERS
-          </h3>
-        </div>
-        <SponsorMarquee />
-      </section>
 
       {/* SECTION 7: RECRUITMENT CTA BLOCK */}
       <section className="py-20 bg-bg-base relative z-10 px-4 md:px-8">
