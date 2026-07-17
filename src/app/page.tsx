@@ -3,12 +3,11 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Users, Calendar, Trophy, Cpu } from "lucide-react";
-import HeroSchematic from "@/components/HeroSchematic";
-import { siteConfig } from "@/content/site";
+import { ChevronRight } from "lucide-react";
+
 import { vehicles } from "@/content/vehicles";
 import ScrollReveal from "@/components/ScrollReveal";
-import AnimatedCounter from "@/components/AnimatedCounter";
+
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 import HeroBackground from "@/components/HeroBackground";
@@ -28,10 +27,7 @@ export default function Home() {
   const opacityHero = useTransform(scrollY, [0, 600], [1, 0]);
 
   // States to trigger stats icon pulse animations when count finishes
-  const [stat1Comp, setStat1Comp] = useState(false);
-  const [stat2Comp, setStat2Comp] = useState(false);
-  const [stat3Comp, setStat3Comp] = useState(false);
-  const [stat4Comp, setStat4Comp] = useState(false);
+
 
   return (
     <div className="relative w-full flex flex-col min-h-screen overflow-hidden">
@@ -93,107 +89,29 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Hero Right — Dynamic Flight Telemetry HUD */}
+          {/* Hero Right — Drone Image */}
           <motion.div
             style={shouldReduceMotion ? {} : { y: yConsole, opacity: opacityHero }}
             className="lg:col-span-5 hidden lg:block"
           >
-            <HeroSchematic />
+            <div className="relative w-full aspect-[4/3] border border-secondary-accent/12 bg-bg-base overflow-hidden">
+              <Image
+                src="/images/hero_drone.jpg"
+                alt="AARG Drone on Landing Pad"
+                fill
+                sizes="(max-width: 1024px) 100vw, 500px"
+                className="object-cover object-[center_70%]"
+                priority
+              />
+              {/* HUD overlay accent lines */}
+              <div className="absolute inset-0 border border-primary-accent/10 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg-base/60 to-transparent pointer-events-none" />
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 2: STATS STRIP — Dashboard readout, no card boxes */}
-      <section className="bg-bg-base border-b border-secondary-accent/15 py-10 md:py-14 relative z-10">
-        {/* Faint HUD crosshair grid overlay */}
-        <div className="absolute inset-0 hud-grid pointer-events-none opacity-20" />
-        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-          {/* Mono eyebrow */}
-          <div className="font-mono text-[10px] text-primary-accent tracking-widest uppercase mb-8 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-primary-accent" />
-            {"// OPERATIONAL METRICS // LIVE READOUT"}
-          </div>
-          {/* Stats row — raw numbers on background, dividers only */}
-          <div className="flex flex-col sm:flex-row items-stretch gap-0">
-            <div className="flex-1">
-              <ScrollReveal delay={0.1}>
-                <div className="flex flex-col items-start px-0 sm:pr-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-secondary-accent/12">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
-                      <AnimatedCounter value={siteConfig.memberCount} onComplete={() => setStat1Comp(true)} />
-                    </span>
-                    <motion.div
-                      animate={stat1Comp ? { scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] } : {}}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Users className="w-5 h-5 text-primary-accent/60" />
-                    </motion.div>
-                  </div>
-                  <span className="font-mono text-[10px] text-secondary-accent/50 uppercase tracking-widest">{"ACTIVE MEMBERS"}</span>
-                </div>
-              </ScrollReveal>
-            </div>
 
-            <div className="flex-1">
-              <ScrollReveal delay={0.2}>
-                <div className="flex flex-col items-start px-0 sm:px-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-secondary-accent/12">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
-                      <AnimatedCounter value={siteConfig.yearsActive} onComplete={() => setStat2Comp(true)} />
-                    </span>
-                    <motion.div
-                      animate={stat2Comp ? { scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] } : {}}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Calendar className="w-5 h-5 text-primary-accent/60" />
-                    </motion.div>
-                  </div>
-                  <span className="font-mono text-[10px] text-secondary-accent/50 uppercase tracking-widest">{"YEARS ACTIVE"}</span>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className="flex-1">
-              <ScrollReveal delay={0.3}>
-                <div className="flex flex-col items-start px-0 sm:px-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-secondary-accent/12">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
-                      <AnimatedCounter value={siteConfig.competitionsWon} onComplete={() => setStat3Comp(true)} />
-                    </span>
-                    <motion.div
-                      animate={stat3Comp ? { scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] } : {}}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Trophy className="w-5 h-5 text-primary-accent/60" />
-                    </motion.div>
-                  </div>
-                  <span className="font-mono text-[10px] text-secondary-accent/50 uppercase tracking-widest">{"COMPETITIVE WINS"}</span>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className="flex-1">
-              <ScrollReveal delay={0.4}>
-                <div className="flex flex-col items-start px-0 sm:pl-8 py-4 sm:py-0">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
-                      <AnimatedCounter value="5" onComplete={() => setStat4Comp(true)} />
-                    </span>
-                    <motion.div
-                      animate={stat4Comp ? { scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] } : {}}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Cpu className="w-5 h-5 text-primary-accent/60" />
-                    </motion.div>
-                  </div>
-                  <span className="font-mono text-[10px] text-secondary-accent/50 uppercase tracking-widest">{"TECHNICAL DOMAINS"}</span>
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       {/* SECTION 3: NARRATIVE ARC — Editorial numbered rows, no cards */}
       <section className="py-16 md:py-28 bg-surface relative z-10 px-4 md:px-8 border-b border-secondary-accent/10">
