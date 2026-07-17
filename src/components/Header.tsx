@@ -47,6 +47,7 @@ export default function Header() {
     { name: "Projects", href: "/projects" },
     { name: "Achievements", href: "/achievements" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Sponsors", href: "/sponsors" },
     { name: "Contact", href: "/contact" },
   ];
 
