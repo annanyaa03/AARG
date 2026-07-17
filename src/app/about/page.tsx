@@ -1,10 +1,7 @@
 "use client";
 
 import React from "react";
-import { siteConfig } from "@/content/site";
 import ScrollReveal from "@/components/ScrollReveal";
-
-import { Target, Compass } from "lucide-react";
 
 export default function About() {
   return (
@@ -14,7 +11,7 @@ export default function About() {
       <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-30" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
-        
+
         {/* Page Header */}
         <div className="border-b border-secondary-accent/15 pb-6">
           <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
@@ -24,144 +21,77 @@ export default function About() {
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
             Who We Are &amp; Why We Fly
           </h1>
-          <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
-            {"REGISTRY // STATUS: ACTIVE // HOST_COLLEGE:"} {siteConfig.college}
-          </p>
         </div>
 
-        {/* Layout: editorial text left, affiliation panel right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left: Editorial text blocks — no card wrappers */}
-          <div className="lg:col-span-7 flex flex-col gap-16">
+        {/* Editorial text blocks */}
+        <div className="flex flex-col gap-16">
 
-            {/* Section 01 — The Team */}
-            <ScrollReveal delay={0.1}>
-              <div className="flex flex-col gap-5">
-                {/* Eyebrow */}
-                <div className="flex items-center gap-4">
-                  <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">01</span>
-                  <div className="hud-divider-v" style={{ height: "2.5rem" }} />
-                  <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Foundational Overview</span>
-                </div>
-                {/* Rule */}
-                <div className="hud-divider-h" />
-                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
-                  THE TEAM
-                </h2>
-                <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-xl">
-                  <p>
-                    Founded in <span className="text-primary-accent font-bold font-mono">{siteConfig.foundingYear}</span>, 
-                    AARG is an elite student-led engineering team dedicated to autonomous aviation, 
-                    bringing together <span className="text-primary-accent font-bold font-mono">{siteConfig.memberCount}</span>+ 
-                    students across electrical, computer, mechanical, and business disciplines.
-                  </p>
-                  <p>
-                    We design, build, and test unmanned aerial vehicle (UAV) systems from the ground up. 
-                    Our platforms undergo extensive validation checks to meet national standards, 
-                    aiming for precision flight envelopes at SAE Aero Design and SAE India Drone Design challenges.
-                  </p>
-                </div>
+          {/* Section 01 — Who We Are */}
+          <ScrollReveal delay={0.1}>
+            <div className="flex flex-col gap-5">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-4">
+                <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">01</span>
+                <div className="hud-divider-v" style={{ height: "2.5rem" }} />
+                <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Foundational Overview</span>
               </div>
-            </ScrollReveal>
-
-            {/* Section 02 — Mission & Vision */}
-            <ScrollReveal delay={0.2}>
-              <div className="flex flex-col gap-5">
-                {/* Eyebrow */}
-                <div className="flex items-center gap-4">
-                  <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">02</span>
-                  <div className="hud-divider-v" style={{ height: "2.5rem" }} />
-                  <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Mission &amp; Vision</span>
-                </div>
-                <div className="hud-divider-h" />
-                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
-                  OUR GOALS
-                </h2>
-                {/* Two-column icon + text items — no card borders */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-2">
-                  <div className="flex gap-4">
-                    <div className="mt-0.5">
-                      <Target className="w-5 h-5 text-primary-accent shrink-0" />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <h4 className="font-mono text-[10px] font-bold uppercase text-primary-accent tracking-widest">
-                        MISSION DETAIL
-                      </h4>
-                      <div className="hud-divider-h" style={{ width: "2rem" }} />
-                      <p className="text-secondary-accent/75 text-sm leading-relaxed">
-                        To construct highly robust UAV platforms that address complex mission criteria, bridging the gap between theoretical dynamics and physically validated aerial systems.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="mt-0.5">
-                      <Compass className="w-5 h-5 text-primary-accent shrink-0" />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <h4 className="font-mono text-[10px] font-bold uppercase text-primary-accent tracking-widest">
-                        VISION BLUEPRINT
-                      </h4>
-                      <div className="hud-divider-h" style={{ width: "2rem" }} />
-                      <p className="text-secondary-accent/75 text-sm leading-relaxed">
-                        To serve as an incubation hub for autonomous flight innovation, composite research, and next-generation systems engineering pioneers in college robotics.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-          </div>
-
-          {/* Right: Affiliation telemetry panel + founding story */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <ScrollReveal delay={0.3}>
-              <div className="border border-secondary-accent/25 bg-surface/80 p-6 relative font-mono text-[11px] text-secondary-accent/80 flex flex-col gap-4">
-                <div className="hud-corner hud-corner-tl" />
-                <div className="hud-corner hud-corner-tr" />
-                <div className="hud-corner hud-corner-bl" />
-                <div className="hud-corner hud-corner-br" />
-
-                <div className="text-primary-accent font-bold border-b border-secondary-accent/15 pb-2 uppercase">
-                  {"// INSTITUTIONAL AFFILIATION"}
-                </div>
-                
-                <div className="flex flex-col gap-3 font-sans">
-                  <div className="flex flex-col border-b border-secondary-accent/8 pb-3">
-                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase mb-0.5">DEPARTMENT</span>
-                    <span className="font-semibold text-secondary-accent">{siteConfig.department}</span>
-                  </div>
-                  
-                  <div className="flex flex-col border-b border-secondary-accent/8 pb-3">
-                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase mb-0.5">COLLEGE / UNIVERSITY</span>
-                    <span className="font-semibold text-secondary-accent">{siteConfig.college}</span>
-                  </div>
-
-                  <div className="flex flex-col">
-                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase mb-0.5">OPERATIONAL BASE</span>
-                    <span className="font-semibold text-secondary-accent">{siteConfig.labRoom}</span>
-                  </div>
-                </div>
-
-                <div className="border-t border-secondary-accent/10 pt-4 text-[10px] text-secondary-accent/50 leading-relaxed font-sans">
-                  AARG operates with the structural support, funding, and technical guidance of our parent academic department, using university labs for CFD simulations, flight computer testing, and carbon composites curation.
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Founding story — flat editorial text, no card border */}
-            <ScrollReveal delay={0.4}>
-              <div className="flex flex-col gap-3 pt-4 border-t border-secondary-accent/15">
-                <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-                  {"// THE FOUNDING STORY"}
-                </span>
-                <p className="font-sans text-sm leading-relaxed text-secondary-accent/75">
-                  Established by a small cohort of engineering students seeking to explore composites fabrication and autonomous UAV flight, AARG has grown from a handful of model airplane builders into a structured multidisciplinary division fielding UAVs on international runways.
+              <div className="hud-divider-h" />
+              <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
+                WHO WE ARE
+              </h2>
+              <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-3xl">
+                <p>
+                  Advanced Aerial Robotics Group (AARG) is the official student-led aerial robotics organization at AISSMS Institute of Information Technology, bringing together students with a shared passion for aerospace, robotics, embedded systems, and autonomous technologies. Founded to foster innovation through hands-on engineering, AARG provides a collaborative environment where members transform ideas into practical aerial robotic systems while developing the technical skills required to solve real-world engineering challenges.
                 </p>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Section 02 — What We Do */}
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col gap-5">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-4">
+                <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">02</span>
+                <div className="hud-divider-v" style={{ height: "2.5rem" }} />
+                <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Operations &amp; Focus</span>
+              </div>
+              <div className="hud-divider-h" />
+              <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
+                WHAT WE DO
+              </h2>
+              <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-3xl">
+                <p>
+                  At AARG, learning happens by building. Our members work on the complete spectrum of aerial robotics, including unmanned aerial vehicles, embedded flight controllers, autonomous navigation, computer vision, control systems, and intelligent mission planning. Through research-oriented projects, technical workshops, competitions, and collaborative development, we encourage a culture of curiosity, experimentation, and continuous improvement.
+                </p>
+                <p>
+                  Whether designing custom hardware, developing flight software, or integrating AI into autonomous platforms, every project is driven by a commitment to engineering excellence.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Section 03 — Our Goal */}
+          <ScrollReveal delay={0.3}>
+            <div className="flex flex-col gap-5">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-4">
+                <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">03</span>
+                <div className="hud-divider-v" style={{ height: "2.5rem" }} />
+                <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Mission &amp; Vision</span>
+              </div>
+              <div className="hud-divider-h" />
+              <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
+                OUR GOAL
+              </h2>
+              <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-3xl">
+                <p>
+                  Our goal is to create a strong community of innovators who are eager to explore the future of aerial robotics and autonomous systems. By providing opportunities to learn beyond the classroom, collaborate across disciplines, and work on meaningful engineering projects, AARG aims to prepare students for careers in aerospace, robotics, and advanced technology while contributing to a growing culture of innovation at AISSMS IoIT.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
         </div>
       </div>
     </div>

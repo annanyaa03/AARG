@@ -215,16 +215,15 @@ export default function Home() {
               <div className="col-span-12 md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
                 <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">01</span>
                 <div className="hud-divider-v md:hidden" style={{height: '2rem'}} />
-                <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">The Mission</span>
+                <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">Foundational Overview</span>
               </div>
               <div className="hidden md:block col-span-1">
                 <div className="hud-divider-v" style={{minHeight: '100%', height: '100%'}} />
               </div>
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
-                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">What We Do</h3>
+                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">Who We Are</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
-                  AARG designs, simulates, builds, and flies UAV systems from the ground up. 
-                  Our team engineers specialized cargo planes and drone delivery platforms designed to transport payloads, pack into tactical boxes, and operate fully autonomously.
+                  Advanced Aerial Robotics Group (AARG) is the official student-led aerial robotics organization at AISSMS Institute of Information Technology, bringing together students with a shared passion for aerospace, robotics, embedded systems, and autonomous technologies. Founded to foster innovation through hands-on engineering, AARG provides a collaborative environment where members transform ideas into practical aerial robotic systems while developing the technical skills required to solve real-world engineering challenges.
                 </p>
               </div>
             </div>
@@ -236,15 +235,15 @@ export default function Home() {
               <div className="col-span-12 md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
                 <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">02</span>
                 <div className="hud-divider-v md:hidden" style={{height: '2rem'}} />
-                <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">The Method</span>
+                <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">Operations &amp; Focus</span>
               </div>
               <div className="hidden md:block col-span-1">
                 <div className="hud-divider-v" style={{minHeight: '100%', height: '100%'}} />
               </div>
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
-                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">How We Do It</h3>
+                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">What We Do</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
-                  We employ rigorous aerospace methods: computational fluid dynamics (CFD) for aerodynamics, composite laminates and stress analysis for fabrication, and hardware-in-the-loop autopilot tuning for controls.
+                  At AARG, learning happens by building. Our members work on the complete spectrum of aerial robotics, including unmanned aerial vehicles, embedded flight controllers, autonomous navigation, computer vision, control systems, and intelligent mission planning. Through research-oriented projects, technical workshops, competitions, and collaborative development, we encourage a culture of curiosity, experimentation, and continuous improvement. Whether designing custom hardware, developing flight software, or integrating AI into autonomous platforms, every project is driven by a commitment to engineering excellence.
                 </p>
               </div>
             </div>
@@ -256,15 +255,15 @@ export default function Home() {
               <div className="col-span-12 md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
                 <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">03</span>
                 <div className="hud-divider-v md:hidden" style={{height: '2rem'}} />
-                <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">The Motivation</span>
+                <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">Mission &amp; Vision</span>
               </div>
               <div className="hidden md:block col-span-1">
                 <div className="hud-divider-v" style={{minHeight: '100%', height: '100%'}} />
               </div>
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
-                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">Why We Do It</h3>
+                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">Our Goal</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
-                  To cultivate industry-ready systems engineers, UAV pilots, and business strategists. We seek to push the envelope of autonomous flight and claim top placements on national-level drone arenas.
+                  Our goal is to create a strong community of innovators who are eager to explore the future of aerial robotics and autonomous systems. By providing opportunities to learn beyond the classroom, collaborate across disciplines, and work on meaningful engineering projects, AARG aims to prepare students for careers in aerospace, robotics, and advanced technology while contributing to a growing culture of innovation at AISSMS IoIT.
                 </p>
               </div>
             </div>
