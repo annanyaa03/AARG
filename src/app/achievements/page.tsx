@@ -144,7 +144,7 @@ export default function Achievements() {
       <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
       <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20" />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
+      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-10 md:gap-14">
         
         {/* Page Header */}
         <div className="border-b border-secondary-accent/15 pb-6">
@@ -159,9 +159,6 @@ export default function Achievements() {
             RECORD_DATABASE // PODIUMS SECURED
           </p>
         </div>
-
-
-
         {/* AWARDS REGISTRY TIMELINE TRACK */}
         <div className="flex flex-col gap-8">
           <div className="flex items-center gap-3">
@@ -173,7 +170,7 @@ export default function Achievements() {
 
           <div 
             ref={timelineRef}
-            className="relative flex flex-col gap-2 pl-6 md:pl-10 max-w-4xl mx-auto w-full"
+            className="relative flex flex-col gap-2 pl-6 md:pl-10 max-w-4xl w-full"
           >
             {/* Timeline track fill line */}
             {!shouldReduceMotion && (

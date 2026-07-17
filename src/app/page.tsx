@@ -21,7 +21,6 @@ export default function Home() {
   
   // Parallax transforms (bypassed if reduced motion is requested)
   const yText = useTransform(scrollY, [0, 600], [0, 80]);
-  const yConsole = useTransform(scrollY, [0, 600], [0, 130]);
   const opacityHero = useTransform(scrollY, [0, 600], [1, 0]);
 
   // States to trigger stats icon pulse animations when count finishes
@@ -33,24 +32,41 @@ export default function Home() {
       {/* SECTION 1: HERO SECTION */}
       <section 
         ref={heroRef}
-        className="relative min-h-[90vh] flex items-center justify-center border-b border-secondary-accent/15 bg-bg-base hud-grid hud-scanlines py-20 px-4 md:px-8"
+        className="relative min-h-[90vh] flex items-center border-b border-secondary-accent/15 hud-grid hud-scanlines py-20 px-4 md:px-8 overflow-hidden"
       >
+        {/* Full-bleed background image */}
+        <Image
+          src="/images/hero_drone.jpg"
+          alt="AARG Fixed-Wing UAV in Flight"
+          fill
+          sizes="100vw"
+          quality={100}
+          className="object-cover object-center z-0"
+          priority
+        />
+
+        {/* Dark overlay for legibility — lightened so image stays visible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-base/70 via-bg-base/40 to-bg-base/10 z-[1]" />
+
+        {/* Bottom vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-base/50 via-transparent to-bg-base/20 z-[1]" />
+
         {/* Slowly drifting background particles */}
-        <HeroBackground />
-        
+        <div className="relative z-[2]">
+          <HeroBackground />
+        </div>
+
         {/* Fine crosshairs overlay */}
-        <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-40 z-0" />
+        <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20 z-[2]" />
 
-        {/* Clean radial fade from edges — no HUD corners */}
-
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10 items-center">
+        <div className="max-w-7xl mx-auto w-full relative z-[3] items-center">
           
-          {/* Hero Left Content */}
+          {/* Hero Content */}
           <motion.div 
             style={shouldReduceMotion ? {} : { y: yText, opacity: opacityHero }}
-            className="lg:col-span-7 flex flex-col gap-6 text-left"
+            className="flex flex-col gap-6 text-left max-w-2xl"
           >
-            {/* Section Eyebrow with typewriter decrypt */}
+            {/* Section Eyebrow */}
             <div className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
               <span className="inline-block w-2 h-2 bg-primary-accent animate-pulse" />
               AARG FLIGHT COMMAND MODULE // INITIALIZED
@@ -84,26 +100,6 @@ export default function Home() {
               >
                 ABOUT_US // BRIEFING
               </Link>
-            </div>
-          </motion.div>
-
-          {/* Hero Right — Drone Image */}
-          <motion.div
-            style={shouldReduceMotion ? {} : { y: yConsole, opacity: opacityHero }}
-            className="lg:col-span-5 hidden lg:block"
-          >
-            <div className="relative w-full aspect-[4/3] border border-secondary-accent/12 bg-bg-base overflow-hidden">
-              <Image
-                src="/images/hero_drone.jpg"
-                alt="AARG Drone on Landing Pad"
-                fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover object-[center_70%]"
-                priority
-              />
-              {/* HUD overlay accent lines */}
-              <div className="absolute inset-0 border border-primary-accent/10 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg-base/60 to-transparent pointer-events-none" />
             </div>
           </motion.div>
         </div>
