@@ -123,7 +123,7 @@ export default function Home() {
 
 
       {/* SECTION 3: NARRATIVE ARC — Editorial numbered rows, no cards */}
-      <section className="py-16 md:py-28 bg-surface relative z-10 px-4 md:px-8 border-b border-secondary-accent/10">
+      <section className="py-16 md:py-28 bg-surface relative z-10 px-4 md:px-8">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           {scrollDots.map((dot, index) => (
             <span

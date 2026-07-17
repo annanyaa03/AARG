@@ -3,6 +3,23 @@ import Link from "next/link";
 import { siteConfig } from "@/content/site";
 import { Mail, Phone } from "lucide-react";
 
+const footerDots = Array.from({ length: 72 }, (_, index) => {
+  const seed = index * 41 + 12;
+  const rand = (n: number) => Math.abs(Math.sin(n) * 10000 % 1);
+  const left = 4 + Math.floor(rand(seed) * 92);
+  const top = 6 + Math.floor(rand(seed + 7) * 74);
+  const size = 0.9 + rand(seed + 3) * 1.4;
+  const delay = `${-(rand(seed + 11) * 7).toFixed(2)}s`;
+  const duration = `${2.4 + rand(seed + 13) * 2.4}s`;
+  return {
+    left: `${Math.min(left, 96)}%`,
+    top: `${Math.min(top, 90)}%`,
+    size,
+    delay,
+    duration,
+  };
+});
+
 export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "/" },
@@ -15,8 +32,25 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-bg-base border-t border-secondary-accent/15 py-12 md:py-16 font-mono text-[11px] relative z-10">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+    <footer className="bg-bg-base py-12 md:py-16 font-mono text-[11px] relative z-10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-t from-bg-base via-bg-base/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        {footerDots.map((dot, index) => (
+          <span
+            key={index}
+            className="scroll-dot"
+            style={{
+              left: dot.left,
+              top: dot.top,
+              width: `${dot.size}px`,
+              height: `${dot.size}px`,
+              animationDelay: dot.delay,
+              animationDuration: dot.duration,
+            }}
+          />
+        ))}
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
         {/* Brand Description */}
         <div className="flex flex-col gap-4">
           <Link
