@@ -328,35 +328,6 @@ export default function Home() {
       </section>
 
 
-
-      {/* SECTION 7: RECRUITMENT CTA BLOCK */}
-      <section className="py-20 bg-bg-base relative z-10 px-4 md:px-8">
-        <div className="max-w-5xl mx-auto border border-primary-accent/25 bg-surface-low p-8 md:p-12 relative flex flex-col items-center text-center gap-6">
-          {/* Accent bar */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-accent/50 to-transparent pointer-events-none" />
-          
-          <div className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
-            <span className="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
-            STATUS: RECRUITMENT ACTIVE FOR BATCH 2026
-          </div>
-          
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase leading-tight max-w-2xl">
-            Are You Ready to Design the Future of Flight?
-          </h2>
-          
-          <p className="text-secondary-accent/80 font-sans text-sm md:text-base max-w-xl leading-relaxed">
-            We are looking for passionate minds across aerodynamics, structural fabrication, control software, 
-            propulsion mechanics, and business operations. No prior drone experience required—only raw curiosity.
-          </p>
-
-          <Link
-            href="/join"
-            className="font-mono text-xs font-bold border border-primary-accent bg-primary-accent text-white px-8 py-4 hover:bg-transparent hover:text-primary-accent transition-all duration-250 focus-hud rounded-none"
-          >
-            INITIATE_APPLICATION // INTERVIEW_FLOW
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

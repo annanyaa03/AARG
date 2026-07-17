@@ -146,9 +146,12 @@ export default function Header() {
             <Magnetic>
               <Link
                 href="/join"
-                className="group relative overflow-hidden font-mono text-[10px] font-bold border border-primary-accent/40 bg-primary-accent/5 px-4 py-2 hover:bg-primary-accent/15 hover:border-primary-accent hover:text-white transition-all duration-300 focus-hud rounded-md flex items-center gap-1.5 hover:scale-[1.02]"
+                className="group relative overflow-hidden font-mono text-[10px] font-bold border border-primary-accent bg-primary-accent px-4 py-2 hover:bg-primary-accent/90 text-white transition-all duration-300 focus-hud rounded-none flex items-center gap-1.5 hover:scale-[1.02]"
               >
-                <span className="relative z-10">{"JOIN_US // REC_OPEN"}</span>
+                <span className="relative z-10 flex items-center gap-1.5">
+                  <span className="text-[11px] font-bold">↗</span>
+                  <span>JOIN US</span>
+                </span>
               </Link>
             </Magnetic>
           </div>
@@ -224,9 +227,10 @@ export default function Header() {
                 <Link
                   href="/join"
                   onClick={() => setIsOpen(false)}
-                  className="font-mono text-xs font-bold text-center border border-primary-accent bg-primary-accent/5 py-3 hover:bg-primary-accent hover:text-white transition-all duration-300 focus-hud rounded-md block"
+                  className="font-mono text-xs font-bold text-center border border-primary-accent bg-primary-accent py-3 hover:bg-primary-accent/90 text-white transition-all duration-300 focus-hud rounded-none flex items-center justify-center gap-1.5"
                 >
-                  {"JOIN_US // REC_OPEN"}
+                  <span className="font-bold">↗</span>
+                  <span>JOIN US</span>
                 </Link>
                 <div className="text-center font-mono text-[9px] text-secondary-accent/40 uppercase">
                   AARG Flight Console v1.0.0
