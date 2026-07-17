@@ -41,12 +41,12 @@ export default function Home() {
           fill
           sizes="100vw"
           quality={100}
-          className="object-cover object-center z-0"
+          className="object-cover object-center z-0 brightness-90"
           priority
         />
 
-        {/* Dark overlay for legibility — lightened so image stays visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg-base/70 via-bg-base/40 to-bg-base/10 z-[1]" />
+        {/* Subtle darkening overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-base/10 via-bg-base/20 to-bg-base/10 z-[1]" />
 
         {/* Bottom vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-bg-base/50 via-transparent to-bg-base/20 z-[1]" />
@@ -66,12 +66,6 @@ export default function Home() {
             style={shouldReduceMotion ? {} : { y: yText, opacity: opacityHero }}
             className="flex flex-col gap-6 text-left max-w-2xl"
           >
-            {/* Section Eyebrow */}
-            <div className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-primary-accent animate-pulse" />
-              AARG FLIGHT COMMAND MODULE // INITIALIZED
-            </div>
-
             {/* Main Taglines */}
             <h1 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-secondary-accent leading-tight">
               Designing, Building, <br />
