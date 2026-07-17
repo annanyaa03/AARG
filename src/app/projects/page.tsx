@@ -39,7 +39,7 @@ export default function Projects() {
             PROJECT_MANIFEST // AUTON_FLIGHT_SYS
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
-            Engineering Projects
+            Research Projects
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             ACTIVE_R&amp;D // IN-HOUSE HARDWARE &amp; FIRMWARE
@@ -48,28 +48,27 @@ export default function Projects() {
 
         {/* PROJECT SPOTLIGHT - MARUT */}
         <ScrollReveal>
-          <div className="border border-primary-accent/35 bg-surface/30 p-6 md:p-10 relative flex flex-col gap-8">
-            <div className="hud-corner hud-corner-tl !border-primary-accent" />
-            <div className="hud-corner hud-corner-tr !border-primary-accent" />
-            <div className="hud-corner hud-corner-bl !border-primary-accent" />
-            <div className="hud-corner hud-corner-br !border-primary-accent" />
+          <div className="flex flex-col gap-12 md:gap-16">
+            
+            {/* Title & Status */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs text-primary-accent tracking-widest uppercase font-semibold">
+                  PROJECT_CODENAME: MARUT
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <span className="font-mono text-[9px] text-green-500 uppercase tracking-widest">ACTIVE DEVELOPMENT</span>
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight">
+                Marut Flight Control Unit
+              </h2>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Written Narrative */}
-              <div className="lg:col-span-7 flex flex-col gap-4">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs text-primary-accent tracking-widest uppercase font-semibold">
-                    PROJECT_CODENAME: MARUT
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  <span className="font-mono text-[9px] text-green-500 uppercase tracking-widest">ACTIVE DEVELOPMENT</span>
-                </div>
-                
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight">
-                  Marut Flight Control Unit
-                </h2>
-
-                <div className="font-sans text-sm md:text-base text-secondary-accent/80 space-y-4 leading-relaxed mt-2">
+            {/* Split Panel: Intro Text & Technical Specifications */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              {/* Written Narrative - Part 1 */}
+              <div className="lg:col-span-7 flex flex-col gap-6">
+                <div className="font-sans text-sm md:text-base text-secondary-accent/80 space-y-4 leading-relaxed">
                   <p>
                     <strong>Marut FCU</strong> is a student-built, open-source flight control unit developed with the explicit goal of supporting quadcopter, fixed-wing, and VTOL platforms under one repository and one evolving firmware architecture.
                   </p>
@@ -84,7 +83,7 @@ export default function Projects() {
                   </p>
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4">
                   <a
                     href="https://marut-bay.vercel.app/"
                     target="_blank"
@@ -97,89 +96,91 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Hardware Specifications Telemetry */}
-              <div className="lg:col-span-5 w-full flex flex-col gap-4">
-                <div className="border border-secondary-accent/15 bg-bg-base/80 p-6 font-mono text-xs relative flex flex-col gap-4">
-                  <div className="hud-corner hud-corner-tl" />
-                  <div className="hud-corner hud-corner-tr" />
-                  <div className="hud-corner hud-corner-bl" />
-                  <div className="hud-corner hud-corner-br" />
-
-                  <div className="text-primary-accent font-bold border-b border-secondary-accent/15 pb-2 uppercase tracking-wider">
-                    {"// FCU_TECHNICAL_SPECS"}
+              {/* Technical Specifications Timeline Stream */}
+              <div className="lg:col-span-5 w-full">
+                <div className="border-l border-primary-accent/20 pl-6 relative flex flex-col gap-6">
+                  {/* Spec Row 1 */}
+                  <div className="relative group flex flex-col gap-1">
+                    <div className="absolute -left-[29px] top-1 w-2 h-2 bg-primary-accent rounded-full animate-pulse" />
+                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase tracking-wider flex items-center gap-1.5">
+                      <Cpu className="w-3.5 h-3.5 text-primary-accent/70" /> 01 / MICROCONTROLLER
+                    </span>
+                    <span className="font-display text-sm font-bold text-secondary-accent">STM32F4 Series</span>
+                    <span className="font-mono text-[9px] text-secondary-accent/60">ARM® Cortex®-M4 @ 168 MHz</span>
                   </div>
 
-                  <div className="flex flex-col gap-3">
-                    <div className="flex justify-between items-center border-b border-secondary-accent/5 pb-2 text-secondary-accent/80">
-                      <span className="flex items-center gap-2 text-[10px] text-secondary-accent/60 uppercase">
-                        <Cpu className="w-3.5 h-3.5 text-primary-accent/70" /> Microcontroller
-                      </span>
-                      <span className="text-secondary-accent font-bold">STM32F4 Series</span>
-                    </div>
+                  {/* Spec Row 2 */}
+                  <div className="relative group flex flex-col gap-1">
+                    <div className="absolute -left-[29px] top-1 w-2 h-2 bg-primary-accent rounded-full" />
+                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase tracking-wider flex items-center gap-1.5">
+                      <HardDrive className="w-3.5 h-3.5 text-primary-accent/70" /> 02 / OS_KERNEL
+                    </span>
+                    <span className="font-display text-sm font-bold text-secondary-accent">FreeRTOS / CMSIS v2</span>
+                    <span className="font-mono text-[9px] text-secondary-accent/60">Preemptive Real-Time kernel</span>
+                  </div>
 
-                    <div className="flex justify-between items-center border-b border-secondary-accent/5 pb-2 text-secondary-accent/80">
-                      <span className="flex items-center gap-2 text-[10px] text-secondary-accent/60 uppercase">
-                        <HardDrive className="w-3.5 h-3.5 text-primary-accent/70" /> RTOS kernel
-                      </span>
-                      <span className="text-secondary-accent font-bold">FreeRTOS / CMSIS v2</span>
-                    </div>
+                  {/* Spec Row 3 */}
+                  <div className="relative group flex flex-col gap-1">
+                    <div className="absolute -left-[29px] top-1 w-2 h-2 bg-primary-accent rounded-full" />
+                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase tracking-wider flex items-center gap-1.5">
+                      <Layers className="w-3.5 h-3.5 text-primary-accent/70" /> 03 / IDE &amp; TOOLCHAIN
+                    </span>
+                    <span className="font-display text-sm font-bold text-secondary-accent">STM32CubeIDE</span>
+                    <span className="font-mono text-[9px] text-secondary-accent/60">GCC ARM Compiler &amp; Debugger</span>
+                  </div>
 
-                    <div className="flex justify-between items-center border-b border-secondary-accent/5 pb-2 text-secondary-accent/80">
-                      <span className="flex items-center gap-2 text-[10px] text-secondary-accent/60 uppercase">
-                        <Layers className="w-3.5 h-3.5 text-primary-accent/70" /> IDE / Toolchain
-                      </span>
-                      <span className="text-secondary-accent font-bold">STM32CubeIDE</span>
-                    </div>
-
-                    <div className="flex justify-between items-center border-b border-secondary-accent/5 pb-2 text-secondary-accent/80">
-                      <span className="flex items-center gap-2 text-[10px] text-secondary-accent/60 uppercase">
-                        <Compass className="w-3.5 h-3.5 text-primary-accent/70" /> Target Modes
-                      </span>
-                      <span className="text-primary-accent font-bold">Quad / Fixed-Wing / VTOL</span>
-                    </div>
+                  {/* Spec Row 4 */}
+                  <div className="relative group flex flex-col gap-1">
+                    <div className="absolute -left-[29px] top-1 w-2 h-2 bg-primary-accent rounded-full" />
+                    <span className="font-mono text-[9px] text-secondary-accent/40 uppercase tracking-wider flex items-center gap-1.5">
+                      <Compass className="w-3.5 h-3.5 text-primary-accent/70" /> 04 / TARGET PLATFORMS
+                    </span>
+                    <span className="font-display text-sm font-bold text-secondary-accent">Quad / Fixed-Wing / VTOL</span>
+                    <span className="font-mono text-[9px] text-secondary-accent/60">Tri-mode autopilot firmware</span>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* CAD Schematic Renders Gallery */}
+            <div className="flex flex-col gap-6 pt-6 border-t border-secondary-accent/10">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
+                  {"// DESIGN_SCHEMATIC_RENDERS"}
+                </span>
+                <div className="flex-1 hud-divider-h" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {images.map((img, i) => (
+                  <div key={i} className="border border-secondary-accent/10 bg-surface-low/30 p-4 flex flex-col gap-4 relative group hover:border-primary-accent/30 transition-all duration-300">
+                    <div className="hud-corner hud-corner-tl !border-secondary-accent/20" />
+                    <div className="hud-corner hud-corner-tr !border-secondary-accent/20" />
+                    <div className="hud-corner hud-corner-bl !border-secondary-accent/20" />
+                    <div className="hud-corner hud-corner-br !border-secondary-accent/20" />
+
+                    {/* Image Container */}
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40 border border-secondary-accent/5">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Caption */}
+                    <div className="font-sans text-xs text-secondary-accent/75 leading-relaxed min-h-[4rem]">
+                      {img.caption}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+
+
           </div>
         </ScrollReveal>
-
-        {/* CAD & HARDWARE GALLERY */}
-        <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-              {"// DESIGN_SCHEMATIC_RENDERS"}
-            </span>
-            <div className="flex-1 hud-divider-h" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {images.map((img, i) => (
-              <ScrollReveal key={i} delay={0.1 * i}>
-                <div className="border border-secondary-accent/15 bg-surface/20 p-4 flex flex-col gap-4 relative group hover:border-primary-accent/40 transition-all duration-300">
-                  <div className="hud-corner hud-corner-tl" />
-                  <div className="hud-corner hud-corner-tr" />
-                  <div className="hud-corner hud-corner-bl" />
-                  <div className="hud-corner hud-corner-br" />
-
-                  {/* Image Container */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40 border border-secondary-accent/10">
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Caption */}
-                  <div className="font-sans text-xs text-secondary-accent/70 leading-relaxed min-h-[4.5rem]">
-                    {img.caption}
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
 
       </div>
     </div>
