@@ -47,259 +47,68 @@ export default function Team() {
           </p>
         </div>
 
-        {/* ─────────────────────────────────────────────────────────────
-            SECTION 1: LEADERSHIP MASTHEAD
-            Captain is larger, vice + faculty beside at smaller scale.
-            No card borders — names sit directly in the strip.
-        ──────────────────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-              {"// CORE LEADERSHIP & FACULTY"}
-            </span>
-            <div className="flex-1 hud-divider-h" />
+        {/* New centered leadership layout per request:
+            - Center top: Faculty (Rahul Jadhav) as main profile
+            - Below: Student President (Aryan Basnet)
+            - Then a 'Members' tag and a three-column grid of remaining people (leads + members)
+        */}
+        <div className="flex flex-col gap-8 items-center">
+          <div className="text-center">
+            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-primary-accent/30 flex items-center justify-center bg-surface mb-4">
+              {faculty.photoUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={faculty.photoUrl} alt={faculty.name} className="object-cover w-full h-full" />
+              ) : (
+                <span className="font-mono text-2xl font-extrabold text-primary-accent">{getInitials(faculty.name)}</span>
+              )}
+            </motion.div>
+            <h2 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">
+              {faculty.name.replace(/^Mr\s+/i, "").trim()}
+            </h2>
+            <p className="font-mono text-sm text-secondary-accent/60 mt-1">Faculty Chair &amp; Coordinator</p>
           </div>
 
-          <ScrollReveal>
-            {/* Masthead strip: captain | divider | vice+faculty */}
-            <div className="flex flex-col md:flex-row items-start md:items-stretch gap-0 border-t border-b border-secondary-accent/15 divide-y md:divide-y-0 md:divide-x divide-secondary-accent/12">
-              
-              {/* Captain — larger visual weight */}
-              <div className="flex items-center gap-6 py-8 md:pr-10 flex-1 md:flex-none md:basis-[42%]">
-                <motion.div
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-primary-accent/40 flex items-center justify-center relative overflow-hidden select-none bg-primary-accent/10 shrink-0"
-                >
-                  {captain.photoUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={captain.photoUrl} alt={captain.name} className="object-cover w-full h-full" />
-                  ) : (
-                    <span className="font-mono text-xl font-extrabold text-primary-accent">
-                      {getInitials(captain.name)}
-                    </span>
-                  )}
-                  {/* Accent ring pulse */}
-                  <span className="absolute inset-0 rounded-full border border-primary-accent/20 animate-pulse pointer-events-none" />
-                </motion.div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[9px] text-primary-accent uppercase tracking-widest font-semibold">
-                    TEAM CAPTAIN
-                  </span>
-                  <h2 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight leading-tight">
-                    {captain.name}
-                  </h2>
-                  <p className="font-mono text-xs text-secondary-accent/55">
-                    {captain.role}
-                  </p>
-                  {captain.linkedinUrl && (
-                    <a
-                      href={captain.linkedinUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${captain.name} LinkedIn`}
-                      className="mt-1 text-secondary-accent/40 hover:text-primary-accent transition-colors focus-hud w-fit"
-                    >
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                </div>
-              </div>
+          <div className="text-center">
+            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border border-secondary-accent/20 flex items-center justify-center bg-surface mb-3">
+              {captain.photoUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={captain.photoUrl} alt={captain.name} className="object-cover w-full h-full" />
+              ) : (
+                <span className="font-mono text-xl font-extrabold text-secondary-accent">{getInitials(captain.name)}</span>
+              )}
+            </motion.div>
+            <h3 className="font-display text-lg font-bold text-secondary-accent uppercase tracking-tight">{captain.name}</h3>
+            <p className="font-mono text-sm text-secondary-accent/60 mt-1">Student President</p>
+          </div>
 
-              {/* Vice Captain + Faculty — smaller scale, side by side */}
-              <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-secondary-accent/12 flex-1">
-                {[viceCaptain, faculty].map((member) => (
-                  <div key={member.name} className="flex items-center gap-4 py-6 px-0 sm:px-8 flex-1">
-                    <div className="w-12 h-12 rounded-full border border-secondary-accent/25 flex items-center justify-center relative overflow-hidden select-none bg-surface shrink-0">
-                      {member.photoUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={member.photoUrl} alt={member.name} className="object-cover w-full h-full" />
-                      ) : (
-                        <span className="font-mono text-sm font-bold text-secondary-accent/70">
-                          {getInitials(member.name)}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-0.5">
-                      <span className="font-mono text-[9px] text-secondary-accent/40 uppercase tracking-widest">
-                        {member.subteam}
-                      </span>
-                      <h3 className="font-display text-sm font-extrabold text-secondary-accent uppercase leading-tight">
-                        {member.name}
-                      </h3>
-                      <p className="font-mono text-[10px] text-secondary-accent/50">
-                        {member.role}
-                      </p>
-                      {"linkedinUrl" in member && member.linkedinUrl && (
-                        <a
-                          href={member.linkedinUrl as string}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-0.5 text-secondary-accent/30 hover:text-primary-accent transition-colors focus-hud w-fit"
-                        >
-                          <Linkedin className="w-3 h-3" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
+          <div className="w-full max-w-5xl mt-6">
+            <div className="text-center mb-4">
+              <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">Members</span>
             </div>
-          </ScrollReveal>
-        </div>
 
-        {/* ─────────────────────────────────────────────────────────────
-            SECTION 2: DOMAIN LEADS — Horizontal hub rail
-            Compact station strip — no card grid.
-        ──────────────────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-              {"// FLIGHT DIVISION LEADS"}
-            </span>
-            <div className="flex-1 hud-divider-h" />
-          </div>
-
-          <ScrollReveal>
-            <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
-              <div className="flex min-w-max md:min-w-0 md:flex-row border-t border-b border-secondary-accent/15 divide-x divide-secondary-accent/12">
-                {teamData.leads.map((lead, index) => (
-                  <motion.div
-                    key={lead.name}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.07 * index, duration: 0.4 }}
-                    className="flex flex-col items-center gap-3 px-6 py-6 text-center flex-1 min-w-[160px] group cursor-default"
-                  >
-                    {/* Domain tag eyebrow */}
-                    <span className="font-mono text-[8px] text-primary-accent/60 uppercase tracking-widest border border-primary-accent/20 px-2 py-0.5">
-                      {lead.subteam.split(" &")[0].toUpperCase()}
-                    </span>
-                    {/* Avatar */}
-                    <div className="w-12 h-12 rounded-full border border-secondary-accent/20 group-hover:border-primary-accent/40 transition-colors flex items-center justify-center bg-surface">
-                      {lead.photoUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={lead.photoUrl} alt={lead.name} className="object-cover w-full h-full rounded-full" />
-                      ) : (
-                        <span className="font-mono text-xs font-bold text-secondary-accent/70 group-hover:text-secondary-accent transition-colors">
-                          {getInitials(lead.name)}
-                        </span>
-                      )}
-                    </div>
-                    {/* Name */}
-                    <div className="flex flex-col gap-0.5 items-center">
-                      <h4 className="font-display text-xs font-bold text-secondary-accent uppercase truncate max-w-[130px]">
-                        {lead.name}
-                      </h4>
-                      <p className="font-mono text-[9px] text-secondary-accent/50 truncate max-w-[130px]">
-                        {lead.role}
-                      </p>
-                    </div>
-                    {/* LinkedIn */}
-                    {lead.linkedinUrl && (
-                      <a
-                        href={lead.linkedinUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-secondary-accent/25 hover:text-primary-accent transition-colors focus-hud"
-                      >
-                        <Linkedin className="w-3 h-3" />
-                      </a>
+            {/* Combine leads + members into a single list for the 3-column grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamData.leads.concat(...Object.values(teamData.members)).flat().map((member, idx) => (
+                <div key={`${member.name}-${idx}`} className="flex flex-col items-center gap-4 bg-surface/5 p-6 rounded">
+                  <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden flex items-center justify-center bg-surface border-2 border-primary-accent/20 shadow-sm">
+                    {member.photoUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={member.photoUrl} alt={member.name} className="object-cover w-full h-full" />
+                    ) : (
+                      <span className="font-mono text-2xl font-extrabold text-secondary-accent/70">{getInitials(member.name)}</span>
                     )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-
-        {/* ─────────────────────────────────────────────────────────────
-            SECTION 3: MEMBERS — Compact roster table per subteam
-            Dense name+role rows, no individual mini-cards.
-        ──────────────────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-              {"// SPECIALIST DIVISIONS"}
-            </span>
-            <div className="flex-1 hud-divider-h" />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-secondary-accent/12 relative">
-
-            {Object.entries(teamData.members).map(([subteamName, membersList], sIdx) => (
-              <ScrollReveal key={subteamName} delay={0.05 * sIdx}>
-                <div className={`flex flex-col gap-0 border-secondary-accent/12 ${
-                  sIdx % 2 === 0 ? "lg:border-r" : ""
-                } ${sIdx < Object.keys(teamData.members).length - 2 ? "border-b" : ""} ${
-                  sIdx === Object.keys(teamData.members).length - 1 && Object.keys(teamData.members).length % 2 === 1 
-                    ? "lg:border-r-0" 
-                    : ""
-                }`}>
-                  {/* Subteam header */}
-                  <div className="flex items-center gap-2 px-5 pt-5 pb-3 border-b border-secondary-accent/10">
-                    <span className="w-1.5 h-1.5 bg-primary-accent shrink-0" />
-                    <h3 className="font-mono text-[10px] font-bold uppercase text-primary-accent tracking-widest">
-                      {subteamName}
-                    </h3>
-                    <span className="font-mono text-[9px] text-secondary-accent/30 ml-auto">
-                      {membersList.length} MEMBERS
-                    </span>
                   </div>
-
-                  {/* Roster rows */}
-                  <div className="px-5 pb-5 pt-2">
-                    {membersList.map((member, mIdx) => (
-                      <motion.div
-                        key={member.name}
-                        initial={{ opacity: 0, x: -8 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.04 * mIdx, duration: 0.35 }}
-                        className="roster-row"
-                      >
-                        {/* Initials badge or Photo */}
-                        <div className="w-7 h-7 rounded-full border border-secondary-accent/15 flex items-center justify-center bg-surface/60 shrink-0 overflow-hidden">
-                          {member.photoUrl ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={member.photoUrl} alt={member.name} className="object-cover w-full h-full" />
-                          ) : (
-                            <span className="font-mono text-[9px] font-bold text-secondary-accent/55">
-                              {getInitials(member.name)}
-                            </span>
-                          )}
-                        </div>
-                        {/* Name + Role */}
-                        <div className="flex flex-col gap-0 min-w-0 flex-1">
-                          <span className="font-display text-xs font-bold text-secondary-accent uppercase truncate leading-tight">
-                            {member.name}
-                          </span>
-                          <span className="font-mono text-[9px] text-secondary-accent/45 truncate">
-                            {member.role}
-                          </span>
-                        </div>
-                        {/* LinkedIn icon */}
-                        {member.linkedinUrl && (
-                          <a
-                            href={member.linkedinUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${member.name} LinkedIn`}
-                            className="text-secondary-accent/40 hover:text-primary-accent transition-colors focus-hud shrink-0"
-                          >
-                            <Linkedin className="w-3.5 h-3.5" />
-                          </a>
-                        )}
-                      </motion.div>
-                    ))}
+                  <div className="text-center">
+                    <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase">{member.name}</h4>
+                      <p className="font-mono text-sm text-secondary-accent/60">{member.role || 'Member'}</p>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Removed subteam/lead sections per request — only the centered members grid above is shown */}
 
         {/* ─────────────────────────────────────────────────────────────
             SECTION 4: ALUMNI — Horizontal scrolling strip
