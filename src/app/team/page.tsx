@@ -42,9 +42,6 @@ export default function Team() {
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
             The AARG Squadron
           </h1>
-          <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
-            CREW_TOTAL // {teamData.leadership.length + teamData.leads.length + 15} MEMBERS ACTIVE
-          </p>
         </div>
 
         {/* New centered leadership layout per request:
@@ -82,10 +79,6 @@ export default function Team() {
           </div>
 
           <div className="w-full max-w-5xl mt-6">
-            <div className="text-center mb-4">
-              <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">Members</span>
-            </div>
-
             {/* Combine leads + members into a single list for the 3-column grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {teamData.leads.concat(...Object.values(teamData.members)).flat().map((member, idx) => (
@@ -93,7 +86,12 @@ export default function Team() {
                   <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden flex items-center justify-center bg-surface border-2 border-primary-accent/20 shadow-sm">
                     {member.photoUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={member.photoUrl} alt={member.name} className="object-cover w-full h-full" />
+                      <img
+                        src={member.photoUrl}
+                        alt={member.name}
+                        className="object-cover w-full h-full"
+                        style={{ objectPosition: member.name === "Pushkar Lokhande" ? "center 40%" : "center center" }}
+                      />
                     ) : (
                       <span className="font-mono text-2xl font-extrabold text-secondary-accent/70">{getInitials(member.name)}</span>
                     )}
@@ -114,18 +112,19 @@ export default function Team() {
             SECTION 4: ALUMNI — Horizontal scrolling strip
             Pure typography: year / name / role, no card borders.
         ──────────────────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-              {"// DECOMMISSIONED OFFICER CADRES (ALUMNI)"}
-            </span>
-            <div className="flex-1 hud-divider-h" />
-          </div>
+        {teamData.alumni.length > 0 && (
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
+                {"// DECOMMISSIONED OFFICER CADRES (ALUMNI)"}
+              </span>
+              <div className="flex-1 hud-divider-h" />
+            </div>
 
-          <ScrollReveal>
-            <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
-              <div className="flex border-t border-b border-secondary-accent/12 py-5">
-                {teamData.alumni.map((alumnus, index) => (
+            <ScrollReveal>
+              <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+                <div className="flex border-t border-b border-secondary-accent/12 py-5">
+                  {teamData.alumni.map((alumnus, index) => (
                   <motion.div
                     key={alumnus.name}
                     initial={{ opacity: 0 }}
@@ -138,19 +137,27 @@ export default function Team() {
                       {alumnus.classYear}
                     </span>
                     <div className="flex items-center gap-2">
-                      <h4 className="font-display text-sm font-extrabold text-secondary-accent uppercase leading-tight">
-                        {alumnus.name}
-                      </h4>
-                      {alumnus.linkedinUrl && (
-                        <a
-                          href={alumnus.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-secondary-accent/25 hover:text-primary-accent transition-colors focus-hud shrink-0"
-                        >
-                          <Linkedin className="w-3 h-3" />
-                        </a>
-                      )}
+                      {alumnus.photoUrl ? (
+                        <div className="w-10 h-10 rounded-full overflow-hidden bg-surface border border-secondary-accent/20">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={alumnus.photoUrl} alt={alumnus.name} className="object-cover w-full h-full" />
+                        </div>
+                      ) : null}
+                      <div>
+                        <h4 className="font-display text-sm font-extrabold text-secondary-accent uppercase leading-tight">
+                          {alumnus.name}
+                        </h4>
+                        {alumnus.linkedinUrl && (
+                          <a
+                            href={alumnus.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-secondary-accent/25 hover:text-primary-accent transition-colors focus-hud shrink-0"
+                          >
+                            <Linkedin className="w-3 h-3" />
+                          </a>
+                        )}
+                      </div>
                     </div>
                     <span className="font-mono text-[9px] text-secondary-accent/45 uppercase">
                       {alumnus.role}
@@ -161,6 +168,7 @@ export default function Team() {
             </div>
           </ScrollReveal>
         </div>
+        )}
 
       </div>
     </div>

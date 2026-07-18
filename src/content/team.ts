@@ -27,6 +27,7 @@ export interface TeamData {
     role: string;
     classYear: string;
     linkedinUrl?: string;
+    photoUrl?: string;
   }[];
 }
 export const teamData: TeamData = {
@@ -61,7 +62,7 @@ export const teamData: TeamData = {
       { name: "Shreyas Kharade", role: "Aerodynamics Lead", subteam: "Members" },
       { name: "Siddesh Kavitkar", role: "Avionics and Core Firmware Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/siddhesh-kavitkar-1a3469339/", photoUrl: "/images/team/siddhesh%20Kavitkar.jpg" },
       { name: "Somshekhar Hunasimarad", role: "Structures and Fabrication Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
-      { name: "Pushkar Lokhande", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/pushkar-lokhande-246b11311/" },
+      { name: "Pushkar Lokhande", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/pushkar-lokhande-246b11311/", photoUrl: "/images/team/pushkar%20lokhande.png" },
       { name: "Karan Tikoo", role: "Member", subteam: "Members", photoUrl: "/images/team/Karan%20Tikoo.png" },
       { name: "Vishwank Ramji", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/vishwank-ramji-6031a0359/" },
       { name: "Harshvardhan Karkera", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/harshvardhan-karkera-70479b386/" },
@@ -69,33 +70,9 @@ export const teamData: TeamData = {
       { name: "Sharal Vishvakarma", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/sharal-vishvkarma-b194792bb/" },
       { name: "Shravani Chidrawar", role: "Member", subteam: "Members" },
       { name: "Aaron Mobby", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/aaron-mobby-5819a0289/", photoUrl: "/images/team/aaron%20mobby.png" },
-      { name: "Nandini Gheware", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/nandini-gheware-287400386/", photoUrl: "/images/team/nandini%20gheware.png" }
+      { name: "Nandini Gheware", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/nandini-gheware-287400386/", photoUrl: "/images/team/nandini%20gheware.png" },
+      { name: "Ayush Sharma", role: "Alumni", subteam: "Members", photoUrl: "/images/team/ayush%20sharma.png" }
     ]
   },
-  alumni: [
-    {
-      name: "[ALUMNI NAME 1]",
-      role: "Former Team Captain",
-      classYear: "Class of 2025",
-      linkedinUrl: "https://linkedin.com/in/[ALUMNI_1_LINKEDIN]",
-    },
-    {
-      name: "[ALUMNI NAME 2]",
-      role: "Former Avionics Lead",
-      classYear: "Class of 2024",
-      linkedinUrl: "https://linkedin.com/in/[ALUMNI_2_LINKEDIN]",
-    },
-    {
-      name: "[ALUMNI NAME 3]",
-      role: "Former Aerodynamics Lead",
-      classYear: "Class of 2023",
-      linkedinUrl: "https://linkedin.com/in/[ALUMNI_3_LINKEDIN]",
-    }
-    ,
-    {
-      name: "Ayush Sharma",
-      role: "Alumni",
-      classYear: "Alumni",
-    }
-  ]
+  alumni: []
 };
