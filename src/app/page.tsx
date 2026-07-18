@@ -58,8 +58,8 @@ export default function Home() {
       >
         {/* Full-bleed hero background image */}
         <Image
-          src="/images/hero%20image.png"
-          alt="hero image updated"
+          src="/images/drone_hero.jpg"
+          alt="AARG drone hero"
           fill
           sizes="100vw"
           quality={100}
