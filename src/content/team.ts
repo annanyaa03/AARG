@@ -58,8 +58,8 @@ export const teamData: TeamData = {
   leads: [],
   members: {
     "Members": [
-      { name: "Hitesh Patil", role: "Current NIDAR 2027 Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/hitesh-patil07/" },
-      { name: "Shreyas Kharade", role: "Aerodynamics Lead", subteam: "Members" },
+      { name: "Hitesh Patil", role: "Current NIDAR 2027 Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/hitesh-patil07/", photoUrl: "/images/team/Hitesh%20Patil.png" },
+      { name: "Shreyas Kharade", role: "Aerodynamics Lead", subteam: "Members", photoUrl: "/images/team/Shreyas%20Kharade.png" },
       { name: "Siddesh Kavitkar", role: "Avionics and Core Firmware Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/siddhesh-kavitkar-1a3469339/", photoUrl: "/images/team/siddhesh%20Kavitkar.jpg" },
       { name: "Somshekhar Hunasimarad", role: "Structures and Fabrication Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
       { name: "Pushkar Lokhande", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/pushkar-lokhande-246b11311/", photoUrl: "/images/team/pushkar%20lokhande.png" },
