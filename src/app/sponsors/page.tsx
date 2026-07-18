@@ -62,7 +62,7 @@ export default function Sponsors() {
         <div className="border-b border-secondary-accent/15 pb-6">
           <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-primary-accent" />
-            PARTNERSHIP_PROTOCOL // SPONSOR_AARG
+            SPONSOR AARG
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
             Partner with Innovation
