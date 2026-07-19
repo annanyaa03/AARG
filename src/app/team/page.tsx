@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { teamData } from "@/content/team";
+import { teamData, TeamMember } from "@/content/team";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageBackground from "@/components/PageBackground";
 
@@ -16,6 +16,14 @@ const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+// Generic user icon for placeholder cards
+const UserIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <circle cx="12" cy="8" r="4" />
+    <path d="M20 21a8 8 0 0 0-16 0" />
+  </svg>
+);
+
 // Extract 2-letter initials
 const getInitials = (name: string) => {
   const cleanName = name.replace(/[\[\]]/g, "").trim();
@@ -24,10 +32,90 @@ const getInitials = (name: string) => {
   return cleanName.slice(0, 2).toUpperCase();
 };
 
+// Section header component matching the aerospace HUD theme
+const SectionHeader = ({ label, title }: { label: string; title: string }) => (
+  <div className="flex flex-col gap-2 mb-8">
+    <div className="flex items-center gap-3">
+      <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
+        {label}
+      </span>
+      <div className="flex-1 hud-divider-h" />
+    </div>
+    <h3 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
+      {title}
+    </h3>
+  </div>
+);
+
+// Reusable team member card component
+const MemberCard = ({
+  member,
+  index,
+  isPlaceholder = false,
+}: {
+  member: TeamMember;
+  index: number;
+  isPlaceholder?: boolean;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: 0.06 * index, duration: 0.45, ease: "easeOut" }}
+    className="group flex flex-col items-center gap-4"
+  >
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden flex items-center justify-center bg-surface border-2 border-primary-accent/20 shadow-sm"
+    >
+      {member.photoUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={member.photoUrl}
+          alt={member.name}
+          className="object-cover w-full h-full"
+          style={{ objectPosition: member.name === "Pushkar Lokhande" ? "center 40%" : "center center" }}
+        />
+      ) : isPlaceholder ? (
+        <UserIcon className="w-16 h-16 md:w-20 md:h-20 text-secondary-accent/30" />
+      ) : (
+        <span className="font-mono text-2xl font-extrabold text-secondary-accent/70">{getInitials(member.name)}</span>
+      )}
+    </motion.div>
+
+    {/* Info */}
+    <div className="text-center flex flex-col items-center gap-1">
+      <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase">
+        {member.name}
+      </h4>
+      <p className="font-mono text-sm text-secondary-accent/60">{member.role || "Member"}</p>
+      {member.linkedinUrl && (
+        <a
+          href={member.linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 text-secondary-accent/30 hover:text-primary-accent transition-colors focus-hud"
+          aria-label={`${member.name} LinkedIn`}
+        >
+          <Linkedin className="w-4 h-4" />
+        </a>
+      )}
+    </div>
+  </motion.div>
+);
+
+// Frontend developer placeholder data
+const frontendPlaceholders: TeamMember[] = [
+  { name: "Annanya Ukey", role: "Frontend Developer", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/annanya-ukey-3698592bb/", photoUrl: "/images/team/annanya.png" },
+  { name: "Aayush Gajbhiye", role: "Frontend Developer", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/aayush-gajbhiye-74104438a/", photoUrl: "/images/team/Aayush.png" },
+  { name: "Shruti Bhute", role: "Frontend Developer", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/shruti-bhute-961277384/", photoUrl: "/images/team/shruti bhute.png" },
+];
+
 export default function Team() {
   const captain = teamData.leadership[0];
-  const viceCaptain = teamData.leadership[1];
   const faculty = teamData.faculty[0];
+  const leads = teamData.leads;
+  const coreMembers = Object.values(teamData.members).flat();
 
   return (
     <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
@@ -46,14 +134,13 @@ export default function Team() {
           </h1>
         </div>
 
-        {/* New centered leadership layout per request:
-            - Center top: Faculty (Rahul Jadhav) as main profile
-            - Below: Student President (Aryan Basnet)
-            - Then a 'Members' tag and a three-column grid of remaining people (leads + members)
-        */}
+        {/* ─────────────────────────────────────────────────────────────
+            SECTION 1: Faculty Chair & Student President (centered)
+        ──────────────────────────────────────────────────────────── */}
         <div className="flex flex-col gap-8 items-center">
-          <div className="text-center">
-            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-primary-accent/30 flex items-center justify-center bg-surface mb-4">
+          {/* Faculty Chair */}
+          <div className="text-center flex flex-col items-center gap-1">
+            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-primary-accent/30 flex items-center justify-center bg-surface mb-3">
               {faculty.photoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={faculty.photoUrl} alt={faculty.name} className="object-cover w-full h-full" />
@@ -64,18 +151,23 @@ export default function Team() {
             <h2 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">
               {faculty.name.replace(/^Mr\s+/i, "").trim()}
             </h2>
-            <p className="font-mono text-sm text-secondary-accent/60 mt-1 flex items-center justify-center gap-2">
-              Faculty Chair &amp; Coordinator
-              {faculty.linkedinUrl && (
-                <a href={faculty.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-secondary-accent/40 hover:text-primary-accent transition-colors">
-                  <Linkedin className="w-4 h-4" />
-                </a>
-              )}
-            </p>
+            <p className="font-mono text-sm text-secondary-accent/60">Faculty Chair &amp; Coordinator</p>
+            {faculty.linkedinUrl && (
+              <a
+                href={faculty.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 text-secondary-accent/30 hover:text-primary-accent transition-colors focus-hud"
+                aria-label={`${faculty.name} LinkedIn`}
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            )}
           </div>
 
-          <div className="text-center">
-            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border border-secondary-accent/20 flex items-center justify-center bg-surface mb-3">
+          {/* Student President */}
+          <div className="text-center flex flex-col items-center gap-1">
+            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border border-secondary-accent/20 flex items-center justify-center bg-surface mb-2">
               {captain.photoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={captain.photoUrl} alt={captain.name} className="object-cover w-full h-full" />
@@ -84,52 +176,59 @@ export default function Team() {
               )}
             </motion.div>
             <h3 className="font-display text-lg font-bold text-secondary-accent uppercase tracking-tight">{captain.name}</h3>
-            <p className="font-mono text-sm text-secondary-accent/60 mt-1 flex items-center justify-center gap-2">
-              Student President
-              {captain.linkedinUrl && (
-                <a href={captain.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-secondary-accent/40 hover:text-primary-accent transition-colors">
-                  <Linkedin className="w-4 h-4" />
-                </a>
-              )}
-            </p>
-          </div>
-
-          <div className="w-full max-w-5xl mt-6">
-            {/* Combine leads + members into a single list for the 3-column grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teamData.leads.concat(...Object.values(teamData.members)).flat().map((member, idx) => (
-                <div key={`${member.name}-${idx}`} className="flex flex-col items-center gap-4 bg-surface/5 p-6 rounded">
-                  <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden flex items-center justify-center bg-surface border-2 border-primary-accent/20 shadow-sm">
-                    {member.photoUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={member.photoUrl}
-                        alt={member.name}
-                        className="object-cover w-full h-full"
-                        style={{ objectPosition: member.name === "Pushkar Lokhande" ? "center 40%" : "center center" }}
-                      />
-                    ) : (
-                      <span className="font-mono text-2xl font-extrabold text-secondary-accent/70">{getInitials(member.name)}</span>
-                    )}
-                  </div>
-                  <div className="text-center">
-                    <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase">{member.name}</h4>
-                    <p className="font-mono text-sm text-secondary-accent/60 flex items-center justify-center gap-2">
-                      {member.role || 'Member'}
-                      {member.linkedinUrl && (
-                        <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-secondary-accent/40 hover:text-primary-accent transition-colors">
-                          <Linkedin className="w-3.5 h-3.5" />
-                        </a>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="font-mono text-sm text-secondary-accent/60">Student President</p>
+            {captain.linkedinUrl && (
+              <a
+                href={captain.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 text-secondary-accent/30 hover:text-primary-accent transition-colors focus-hud"
+                aria-label={`${captain.name} LinkedIn`}
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Removed subteam/lead sections per request — only the centered members grid above is shown */}
+        {/* ─────────────────────────────────────────────────────────────
+            Team Leads — 4 in a row
+        ──────────────────────────────────────────────────────────── */}
+        <div className="w-full">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {leads.map((lead, idx) => (
+                <MemberCard key={lead.name} member={lead} index={idx} />
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* ─────────────────────────────────────────────────────────────
+            Members — 3 in a row
+        ──────────────────────────────────────────────────────────── */}
+        <div className="w-full">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {coreMembers.map((member, idx) => (
+                <MemberCard
+                  key={member.name}
+                  member={member}
+                  index={idx}
+                />
+              ))}
+              {/* Frontend Developer Placeholders */}
+              {frontendPlaceholders.map((placeholder, idx) => (
+                <MemberCard
+                  key={`placeholder-${idx}`}
+                  member={placeholder}
+                  index={idx + coreMembers.length}
+                  isPlaceholder
+                />
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
 
         {/* ─────────────────────────────────────────────────────────────
             SECTION 4: ALUMNI — Horizontal scrolling strip
