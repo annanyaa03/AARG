@@ -3,6 +3,7 @@
 import React from "react";
 import { teamData } from "@/content/team";
 import ScrollReveal from "@/components/ScrollReveal";
+import DotField from "@/components/DotField";
 
 import { motion } from "framer-motion";
 
@@ -29,7 +30,23 @@ export default function Team() {
   const faculty = teamData.faculty[0];
 
   return (
-    <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8">
+    <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <DotField
+          dotRadius={2}
+          dotSpacing={14}
+          cursorRadius={500}
+          cursorForce={0}
+          bulgeOnly={false}
+          bulgeStrength={67}
+          glowRadius={160}
+          sparkle
+          waveAmplitude={0}
+          gradientFrom="rgba(168, 85, 247, 0.35)"
+          gradientTo="rgba(180, 151, 207, 0.25)"
+          glowColor="#120F17"
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
@@ -62,7 +79,14 @@ export default function Team() {
             <h2 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">
               {faculty.name.replace(/^Mr\s+/i, "").trim()}
             </h2>
-            <p className="font-mono text-sm text-secondary-accent/60 mt-1">Faculty Chair &amp; Coordinator</p>
+            <p className="font-mono text-sm text-secondary-accent/60 mt-1 flex items-center justify-center gap-2">
+              Faculty Chair &amp; Coordinator
+              {faculty.linkedinUrl && (
+                <a href={faculty.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-secondary-accent/40 hover:text-primary-accent transition-colors">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              )}
+            </p>
           </div>
 
           <div className="text-center">
@@ -75,7 +99,14 @@ export default function Team() {
               )}
             </motion.div>
             <h3 className="font-display text-lg font-bold text-secondary-accent uppercase tracking-tight">{captain.name}</h3>
-            <p className="font-mono text-sm text-secondary-accent/60 mt-1">Student President</p>
+            <p className="font-mono text-sm text-secondary-accent/60 mt-1 flex items-center justify-center gap-2">
+              Student President
+              {captain.linkedinUrl && (
+                <a href={captain.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-secondary-accent/40 hover:text-primary-accent transition-colors">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              )}
+            </p>
           </div>
 
           <div className="w-full max-w-5xl mt-6">
@@ -98,7 +129,14 @@ export default function Team() {
                   </div>
                   <div className="text-center">
                     <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase">{member.name}</h4>
-                      <p className="font-mono text-sm text-secondary-accent/60">{member.role || 'Member'}</p>
+                    <p className="font-mono text-sm text-secondary-accent/60 flex items-center justify-center gap-2">
+                      {member.role || 'Member'}
+                      {member.linkedinUrl && (
+                        <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-secondary-accent/40 hover:text-primary-accent transition-colors">
+                          <Linkedin className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                    </p>
                   </div>
                 </div>
               ))}
