@@ -124,8 +124,8 @@ export default function Team() {
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
         {/* Page Header */}
-        <div className="border-b border-secondary-accent/15 pb-6">
-          <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
+        <div className="border-b border-secondary-accent/15 pb-6 text-center md:text-left">
+          <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center justify-center md:justify-start gap-2">
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             UAV_CREW_MANIFEST // FLIGHT_OFFICERS
           </span>
