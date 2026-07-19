@@ -69,12 +69,12 @@ export default function Header() {
                 className="flex items-center gap-4 group focus-hud"
               >
                 {/* Logo Container */}
-                <div className="relative w-10 h-10 flex-shrink-0 bg-black/40 border border-white/10 ring-1 ring-primary-accent/15 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 shadow-[0_0_0_1px_rgba(200,90,23,0.18)] group-hover:ring-primary-accent/25 group-hover:shadow-[0_0_0_2px_rgba(200,90,23,0.22)]">
+                <div className="relative w-11 h-11 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300">
                   {!logoError ? (
                     <img
-                      src="/logo.png"
+                      src="/images/logo.png"
                       alt="AARG Logo"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                       onError={() => setLogoError(true)}
                     />
                   ) : (

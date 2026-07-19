@@ -27,7 +27,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: "AARG",
   tagline: "Designing, building, and flying next-generation UAVs for student competitions",
-  description: "Advanced Aerial Robotics Group (AARG) is a student-led engineering team dedicated to autonomous aviation, bringing together students across disciplines to design, manufacture, program, and fly competitive UAVs.",
+  description: "AARG is a student-led engineering team within AISSMS IOIT's Drone club dedicated to autonomous aviation, building high-performance fixed-wing aircraft and heavy-lift multirotor drones for prestigious competitions.",
   foundingYear: "[FOUNDING YEAR]",
   memberCount: "40+",
   yearsActive: "5+",

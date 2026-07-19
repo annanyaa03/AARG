@@ -76,8 +76,7 @@ export default function Home() {
             </h1>
 
             <p className="text-secondary-accent/80 text-base md:text-lg font-sans leading-relaxed max-w-xl">
-              AARG is a student-led engineering team dedicated to autonomous aviation, building 
-              high-performance fixed-wing aircraft and heavy-lift multirotor drones for prestigious competitions.
+              AARG is a student-led engineering team within AISSMS IOIT&apos;s Drone club dedicated to autonomous aviation, building high-performance fixed-wing aircraft and heavy-lift multirotor drones for prestigious competitions.
             </p>
 
             {/* Action Buttons */}

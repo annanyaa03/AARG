@@ -19,7 +19,7 @@ function TimelineNode({ award, index }: { award: Award; index: number }) {
   });
 
   const content = (
-    <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 w-full">
+    <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8 w-full">
       <div className="flex flex-col gap-3 flex-1 min-w-0">
         {/* Year + Rank header row */}
         <div className="flex items-center gap-4 flex-wrap">
@@ -50,12 +50,12 @@ function TimelineNode({ award, index }: { award: Award; index: number }) {
       </div>
 
       {award.imageUrl && (
-        <div className="shrink-0 w-full max-w-[200px] md:w-44 md:max-w-none self-start md:mt-1">
+        <div className="shrink-0 w-full max-w-[180px] md:w-40 md:max-w-none flex items-center justify-center md:justify-end">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={award.imageUrl}
             alt={`${award.competition} logo`}
-            className="w-full h-auto object-contain rounded-sm bg-white/95 p-2 border border-secondary-accent/10"
+            className="w-full h-auto max-h-24 object-contain rounded-sm bg-white/95 p-2 border border-secondary-accent/10"
           />
         </div>
       )}

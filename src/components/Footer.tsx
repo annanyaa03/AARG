@@ -72,9 +72,9 @@ export default function Footer() {
               className="font-display font-bold text-xl tracking-wider text-secondary-accent flex items-center gap-2.5 focus-hud w-fit"
             >
               <img
-                src="/logo.png"
+                src="/images/logo.png"
                 alt="AARG Logo"
-                className="w-9 h-9 object-contain rounded-full"
+                className="w-10 h-10 object-contain"
               />
               {siteConfig.name}
             </Link>
