@@ -31,6 +31,7 @@ export const achievementsData: AchievementsData = {
       year: "2025",
       location: "Maharashtra, India",
       description: "Won the Mahahackathon Challenge 1.0 organized under MeitY, Bhashini and the Government of Maharashtra in the Problem Statement of Use of Drones in Disaster Management.",
+      imageUrl: "/images/maha hackathon.png",
     },
     {
       id: "nidar-2025",
@@ -40,6 +41,7 @@ export const achievementsData: AchievementsData = {
       year: "2025",
       location: "India",
       description: "Secured All India Rank 24 in the Ignite category out of 300+ student drone teams from across the nation in the 2025 edition of NIDAR, a premier national-level drone innovation challenge.",
+      imageUrl: "/images/nidar.png",
     },
     {
       id: "isro-iroc-u",
@@ -49,6 +51,7 @@ export const achievementsData: AchievementsData = {
       year: "2025",
       location: "India",
       description: "Shortlisted from the Prelims stage of ISRO's Indian Rover Operations Challenge for universities, demonstrating the team's capability in space robotics and rover system design.",
+      imageUrl: "/images/isro iroc.png",
     },
   ],
   spotlight: {

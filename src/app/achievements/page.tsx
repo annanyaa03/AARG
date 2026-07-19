@@ -18,38 +18,55 @@ function TimelineNode({ award, index }: { award: Award; index: number }) {
     margin: "-10% 0px -30% 0px"
   });
 
+  const content = (
+    <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 w-full">
+      <div className="flex flex-col gap-3 flex-1 min-w-0">
+        {/* Year + Rank header row */}
+        <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-1.5 font-mono text-[9px] text-secondary-accent/45 uppercase">
+            <Calendar className="w-3 h-3" /> {award.year}
+          </div>
+          <span className="font-mono text-[10px] md:text-sm font-extrabold text-primary-accent uppercase border-b border-primary-accent/40 pb-0.5 leading-tight">
+            {award.rank}
+          </span>
+        </div>
+        {/* Title + Competition */}
+        <div>
+          <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase leading-tight">
+            {award.title}
+          </h4>
+          <p className="font-mono text-[10px] text-secondary-accent/35 uppercase mt-1 tracking-wider">
+            {award.competition}
+          </p>
+        </div>
+        {/* Description */}
+        <p className="font-sans text-sm md:text-base text-secondary-accent/70 leading-relaxed max-w-2xl">
+          {award.description}
+        </p>
+        {/* Location tag */}
+        <div className="flex items-center gap-1.5 font-mono text-[9px] text-secondary-accent/35 uppercase tracking-wide mt-1">
+          <MapPin className="w-3 h-3 text-primary-accent/60" /> {award.location}
+        </div>
+      </div>
+
+      {award.imageUrl && (
+        <div className="shrink-0 w-full max-w-[200px] md:w-44 md:max-w-none self-start md:mt-1">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={award.imageUrl}
+            alt={`${award.competition} logo`}
+            className="w-full h-auto object-contain rounded-sm bg-white/95 p-2 border border-secondary-accent/10"
+          />
+        </div>
+      )}
+    </div>
+  );
+
   if (shouldReduceMotion) {
     return (
       <div className="relative flex flex-col gap-3 pl-4 border-l border-secondary-accent/15 py-5">
         <div className="absolute left-[-5px] top-2.5 w-2.5 h-2.5 rounded-full bg-primary-accent" />
-        <div className="pl-6 md:pl-8 flex flex-col gap-3">
-          {/* Year + Rank header row */}
-          <div className="flex items-center gap-4 flex-wrap">
-            <div className="flex items-center gap-1.5 font-mono text-[9px] text-secondary-accent/45 uppercase">
-              <Calendar className="w-3 h-3" /> {award.year}
-            </div>
-            <span className="font-mono text-[10px] text-primary-accent font-extrabold uppercase border-b border-primary-accent/40 pb-0.5">
-              {award.rank}
-            </span>
-          </div>
-          {/* Title + Competition */}
-          <div>
-            <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase leading-tight">
-              {award.title}
-            </h4>
-            <p className="font-mono text-[10px] text-secondary-accent/35 uppercase mt-1 tracking-wider">
-              {award.competition}
-            </p>
-          </div>
-          {/* Description */}
-          <p className="font-sans text-sm text-secondary-accent/70 leading-relaxed max-w-2xl">
-            {award.description}
-          </p>
-          {/* Location tag */}
-          <div className="flex items-center gap-1.5 font-mono text-[9px] text-secondary-accent/35 uppercase tracking-wide mt-1">
-            <MapPin className="w-3 h-3 text-primary-accent/60" /> {award.location}
-          </div>
-        </div>
+        <div className="pl-6 md:pl-8">{content}</div>
       </div>
     );
   }
@@ -87,37 +104,9 @@ function TimelineNode({ award, index }: { award: Award; index: number }) {
         initial={{ opacity: 0, x: 28 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 28 }}
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full pl-6 md:pl-8 flex flex-col gap-3"
+        className="w-full pl-6 md:pl-8"
       >
-        {/* Year + Rank row — sits directly on page background */}
-        <div className="flex items-center gap-4 flex-wrap">
-          <div className="flex items-center gap-1.5 font-mono text-[9px] text-secondary-accent/40 uppercase tracking-wide">
-            <Calendar className="w-3 h-3" /> {award.year}
-          </div>
-          <span className="font-mono text-sm font-extrabold text-primary-accent uppercase border-b border-primary-accent/50 pb-0.5 leading-tight">
-            {award.rank}
-          </span>
-        </div>
-
-        {/* Title */}
-        <div>
-          <h4 className="font-display text-lg md:text-xl font-extrabold text-secondary-accent uppercase leading-tight">
-            {award.title}
-          </h4>
-          <p className="font-mono text-[10px] text-secondary-accent/35 uppercase mt-1 tracking-wider">
-            {award.competition}
-          </p>
-        </div>
-
-        {/* Description */}
-        <p className="font-sans text-sm md:text-base text-secondary-accent/70 leading-relaxed max-w-2xl">
-          {award.description}
-        </p>
-
-        {/* Location footer tag */}
-        <div className="flex items-center gap-1.5 font-mono text-[9px] text-secondary-accent/35 uppercase tracking-wide">
-          <MapPin className="w-3 h-3 text-primary-accent/60" /> {award.location}
-        </div>
+        {content}
       </motion.div>
     </div>
   );
@@ -169,7 +158,7 @@ export default function Achievements() {
 
           <div 
             ref={timelineRef}
-            className="relative flex flex-col gap-2 pl-6 md:pl-10 max-w-4xl w-full"
+            className="relative flex flex-col gap-2 pl-6 md:pl-10 max-w-5xl w-full"
           >
             {/* Timeline track fill line */}
             {!shouldReduceMotion && (
