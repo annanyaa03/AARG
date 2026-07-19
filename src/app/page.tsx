@@ -2,7 +2,6 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 
 import ScrollReveal from "@/components/ScrollReveal";
@@ -36,16 +35,15 @@ export default function Home() {
         ref={heroRef}
         className="relative min-h-[90vh] flex items-center border-b border-secondary-accent/15 hud-grid hud-scanlines py-20 px-4 md:px-8 overflow-hidden"
       >
-        {/* Full-bleed hero background image */}
-        <Image
-          src="/images/drone_hero.jpg"
-          alt="AARG drone hero"
-          fill
-          sizes="100vw"
-          quality={100}
-          className="object-cover object-center z-0 brightness-75"
-          priority
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 brightness-75"
+        >
+          <source src="/images/Hero-video.mp4/WhatsApp Video 2026-07-19 at 3.34.29 PM.mp4" type="video/mp4" />
+        </video>
 
         {/* Darkening overlay for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-bg-base/20 via-bg-base/30 to-bg-base/20 z-[1]" />

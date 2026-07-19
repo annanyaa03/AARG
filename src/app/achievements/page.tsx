@@ -162,7 +162,7 @@ export default function Achievements() {
           >
             {/* Timeline track fill line */}
             {!shouldReduceMotion && (
-              <div className="absolute left-[3px] md:left-[5px] top-6 bottom-6 w-[2px] bg-secondary-accent/8 pointer-events-none z-0">
+              <div className="absolute left-[4px] md:left-[8px] top-6 bottom-6 w-[2px] bg-secondary-accent/8 pointer-events-none z-0">
                 <motion.div
                   style={{ scaleY, transformOrigin: "top" }}
                   className="w-full h-full bg-primary-accent shadow-[0_0_8px_#b44d0b]"
