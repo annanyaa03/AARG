@@ -35,14 +35,11 @@ export default function Projects() {
         <div className="border-b border-secondary-accent/15 pb-6">
           <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-primary-accent" />
-            PROJECT_MANIFEST // AUTON_FLIGHT_SYS
+            ACTIVE_R&amp;D // IN-HOUSE HARDWARE &amp; FIRMWARE
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
             Research Projects
           </h1>
-          <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
-            ACTIVE_R&amp;D // IN-HOUSE HARDWARE &amp; FIRMWARE
-          </p>
         </div>
 
         {/* PROJECT SPOTLIGHT - MARUT */}
