@@ -6,7 +6,7 @@ import PageBackground from "@/components/PageBackground";
 
 export default function About() {
   return (
-    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-6 md:px-8 overflow-hidden">
       <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
@@ -22,6 +22,36 @@ export default function About() {
           </h1>
         </div>
 
+        {/* Logo and Intro Section */}
+        <ScrollReveal delay={0.05}>
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 pb-12 border-b border-secondary-accent/10">
+            <div className="flex-shrink-0 relative w-44 h-44 sm:w-48 sm:h-48 rounded-full border border-secondary-accent/15 bg-surface-low/30 p-5 flex items-center justify-center group hover:border-primary-accent/40 transition-all duration-300 shadow-[0_0_20px_rgba(200,90,23,0.04)] hover:shadow-[0_0_30px_rgba(200,90,23,0.12)]">
+              {/* HUD corners */}
+              <div className="hud-corner hud-corner-tl !border-secondary-accent/20" />
+              <div className="hud-corner hud-corner-tr !border-secondary-accent/20" />
+              <div className="hud-corner hud-corner-bl !border-secondary-accent/20" />
+              <div className="hud-corner hud-corner-br !border-secondary-accent/20" />
+              
+              {/* Rotating outer dash ring */}
+              <div className="absolute inset-2 rounded-full border border-dashed border-primary-accent/20 animate-[spin_40s_linear_infinite] pointer-events-none" />
+              
+              {/* Logo Image */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo.png"
+                alt="AARG Badge Logo"
+                className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            
+            <div className="flex-grow flex flex-col gap-2.5 text-center md:text-left">
+              <p className="font-display text-base sm:text-lg font-medium text-secondary-accent/90 max-w-3xl leading-relaxed">
+                Advanced Aerial Robotics Group is AISSMS IOIT&apos;s premier student engineering flight division, designing and validating next-generation autonomous unmanned aerial systems.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
         {/* Editorial text blocks */}
         <div className="flex flex-col gap-16">
 
@@ -35,6 +65,7 @@ export default function About() {
                 <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Foundational Overview</span>
               </div>
               <div className="hud-divider-h" />
+              
               <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
                 WHO WE ARE
               </h2>

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const pageDots = Array.from({ length: 560 }, (_, index) => {
+const pageDots = Array.from({ length: 80 }, (_, index) => {
   const seeded = index * 83 + 19;
   const rand = (n: number) => Math.abs((Math.sin(n) * 10000) % 1);
   const x = 1 + Math.floor(rand(seeded) * 97);
