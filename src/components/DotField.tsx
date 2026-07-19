@@ -14,6 +14,10 @@ interface DotFieldProps extends HTMLAttributes<HTMLDivElement> {
   bulgeStrength?: number;
   glowRadius?: number;
   sparkle?: boolean;
+  /** Percent of dots that sparkle when sparkle is on (0–100). Default 3. */
+  sparkleChance?: number;
+  /** Scales animation / interaction speed (1 = normal). */
+  motionSpeed?: number;
   waveAmplitude?: number;
   gradientFrom?: string;
   gradientTo?: string;
@@ -29,6 +33,8 @@ const DotField = memo(({
   bulgeStrength = 67,
   glowRadius = 160,
   sparkle = false,
+  sparkleChance = 3,
+  motionSpeed = 1,
   waveAmplitude = 0,
   gradientFrom = 'rgba(168, 85, 247, 0.35)',
   gradientTo = 'rgba(180, 151, 207, 0.25)',
@@ -45,7 +51,7 @@ const DotField = memo(({
   const glowOpacity = useRef(0);
   const engagement = useRef(0);
   const propsRef = useRef<any>({});
-  propsRef.current = { dotRadius, dotSpacing, cursorRadius, cursorForce, bulgeOnly, bulgeStrength, sparkle, waveAmplitude, gradientFrom, gradientTo };
+  propsRef.current = { dotRadius, dotSpacing, cursorRadius, cursorForce, bulgeOnly, bulgeStrength, sparkle, sparkleChance, motionSpeed, waveAmplitude, gradientFrom, gradientTo };
   const rebuildRef = useRef<(() => void) | null>(null);
   const glowIdRef = useRef(`dot-field-glow-${Math.random().toString(36).slice(2, 9)}`);
 
@@ -135,14 +141,15 @@ const DotField = memo(({
       const { w, h } = sizeRef.current;
       const p = propsRef.current;
       const len = dots.length;
-      const t = frameCount * 0.02;
+      const speed = p.motionSpeed ?? 1;
+      const t = frameCount * 0.02 * speed;
 
       const targetEngagement = Math.min(m.speed / 5, 1);
-      engagement.current += (targetEngagement - engagement.current) * 0.06;
+      engagement.current += (targetEngagement - engagement.current) * (0.06 * speed);
       if (engagement.current < 0.001) engagement.current = 0;
       const eng = engagement.current;
 
-      glowOpacity.current += (eng - glowOpacity.current) * 0.08;
+      glowOpacity.current += (eng - glowOpacity.current) * (0.08 * speed);
 
       if (glowEl) {
         glowEl.setAttribute('cx', m.x.toString());
@@ -176,17 +183,17 @@ const DotField = memo(({
             const t = 1 - dist / cr;
             const push = t * t * p.bulgeStrength * eng;
             const angle = Math.atan2(dy, dx);
-            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
-            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
+            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * (0.15 * speed);
+            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * (0.15 * speed);
           } else {
             const angle = Math.atan2(dy, dx);
-            const move = (500 / dist) * (m.speed * p.cursorForce);
+            const move = (500 / dist) * (m.speed * p.cursorForce) * speed;
             d.vx += Math.cos(angle) * -move;
             d.vy += Math.sin(angle) * -move;
           }
         } else if (isBulge) {
-          d.sx += (d.ax - d.sx) * 0.1;
-          d.sy += (d.ay - d.sy) * 0.1;
+          d.sx += (d.ax - d.sx) * (0.1 * speed);
+          d.sy += (d.ay - d.sy) * (0.1 * speed);
         }
 
         if (!isBulge) {
@@ -194,8 +201,8 @@ const DotField = memo(({
           d.vy *= 0.9;
           d.x = d.ax + d.vx;
           d.y = d.ay + d.vy;
-          d.sx += (d.x - d.sx) * 0.1;
-          d.sy += (d.y - d.sy) * 0.1;
+          d.sx += (d.x - d.sx) * (0.1 * speed);
+          d.sy += (d.y - d.sy) * (0.1 * speed);
         }
 
         let drawX = d.sx;
@@ -206,8 +213,9 @@ const DotField = memo(({
         }
 
         if (p.sparkle) {
-          const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
-          if ((hash % 100) < 3) {
+          const sparkleStep = Math.max(1, Math.round(8 / speed));
+          const hash = ((i * 2654435761) ^ Math.floor(frameCount / sparkleStep)) >>> 0;
+          if ((hash % 100) < p.sparkleChance) {
             ctx.moveTo(drawX + rad * 1.8, drawY);
             ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
           } else {

@@ -3,7 +3,7 @@
 import React from "react";
 import { teamData } from "@/content/team";
 import ScrollReveal from "@/components/ScrollReveal";
-import DotField from "@/components/DotField";
+import PageBackground from "@/components/PageBackground";
 
 import { motion } from "framer-motion";
 
@@ -30,23 +30,8 @@ export default function Team() {
   const faculty = teamData.faculty[0];
 
   return (
-    <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8 overflow-hidden">
-      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-        <DotField
-          dotRadius={2}
-          dotSpacing={14}
-          cursorRadius={500}
-          cursorForce={0}
-          bulgeOnly={false}
-          bulgeStrength={67}
-          glowRadius={160}
-          sparkle
-          waveAmplitude={0}
-          gradientFrom="rgba(168, 85, 247, 0.35)"
-          gradientTo="rgba(180, 151, 207, 0.25)"
-          glowColor="#120F17"
-        />
-      </div>
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+      <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
