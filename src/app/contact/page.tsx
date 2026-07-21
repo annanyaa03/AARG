@@ -99,6 +99,35 @@ export default function Contact() {
           </ScrollReveal>
         </div>
 
+        {/* Google Maps Embed */}
+        <ScrollReveal>
+          <div className="relative border border-secondary-accent/15 bg-surface-mid/30 p-4 md:p-6 rounded-lg group">
+            {/* HUD corner lines */}
+            <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-secondary-accent/30 group-hover:border-primary-accent/60 transition-colors" />
+            <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-secondary-accent/30 group-hover:border-primary-accent/60 transition-colors" />
+            <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-secondary-accent/30 group-hover:border-primary-accent/60 transition-colors" />
+            <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-secondary-accent/30 group-hover:border-primary-accent/60 transition-colors" />
+
+            <div className="font-mono text-[9px] uppercase tracking-wider text-secondary-accent/40 font-bold mb-3">
+              OPERATIONAL_GROUND // CAMPUS_LOCATION
+            </div>
+
+            <div className="w-full h-[320px] md:h-[350px] rounded-md overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.9476541947265!2d73.86463237519193!3d18.53126748256436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c10075194af5%3A0x3f2cf3aa14dff029!2sAISSMS%20IOIT!5e0!3m2!1sen!2sin!4v1784579615373!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="AISSMS Institute of Information Technology Location"
+                className="rounded-md"
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+
       </div>
     </div>
   );

@@ -113,7 +113,7 @@ const frontendPlaceholders: TeamMember[] = [
 
 export default function Team() {
   const captain = teamData.leadership[0];
-  const faculty = teamData.faculty[0];
+  const faculty = teamData.faculty;
   const leads = teamData.leads;
   const coreMembers = Object.values(teamData.members).flat();
 
@@ -135,34 +135,18 @@ export default function Team() {
         </div>
 
         {/* ─────────────────────────────────────────────────────────────
-            SECTION 1: Faculty Chair & Student President (centered)
+            SECTION 1: Faculty Row (3 people) & Student President
         ──────────────────────────────────────────────────────────── */}
         <div className="flex flex-col gap-8 items-center">
-          {/* Faculty Chair */}
-          <div className="text-center flex flex-col items-center gap-1">
-            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-primary-accent/30 flex items-center justify-center bg-surface mb-3">
-              {faculty.photoUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={faculty.photoUrl} alt={faculty.name} className="object-cover w-full h-full" />
-              ) : (
-                <span className="font-mono text-2xl font-extrabold text-primary-accent">{getInitials(faculty.name)}</span>
-              )}
-            </motion.div>
-            <h2 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">
-              {faculty.name.replace(/^Mr\s+/i, "").trim()}
-            </h2>
-            <p className="font-mono text-sm text-secondary-accent/60">Faculty Chair &amp; Coordinator</p>
-            {faculty.linkedinUrl && (
-              <a
-                href={faculty.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 text-secondary-accent/30 hover:text-primary-accent transition-colors focus-hud"
-                aria-label={`${faculty.name} LinkedIn`}
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            )}
+          {/* Faculty Row: Principal, Faculty Chair & Coordinator, Faculty Coordinator */}
+          <div className="w-full">
+            <ScrollReveal>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {faculty.map((member, idx) => (
+                  <MemberCard key={member.name} member={member} index={idx} />
+                ))}
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Student President */}
