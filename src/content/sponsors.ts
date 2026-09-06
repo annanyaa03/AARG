@@ -44,14 +44,31 @@ export const sponsorsData: SponsorsData = {
     },
     {
       id: "artemon-aerospace",
-      name: "Artemon",
-      tier: "Technical Partner",
-      role: "3D Printing",
-      logo: "/images/sponsors/artemon_aerospace_logo.jfif",
+      name: "Artemon Aerospace",
+      tier: "Official Prototyping Partner",
+      role: "3D Printing & Prototyping",
+      logo: "/images/sponsors/artemon_aerospace_logo.jpg",
       summary:
-        "Artemon supports AARG through 3D printing, contributing to the development and fabrication of components for our aerial robotics projects.",
+        "Artemon Aerospace supports AARG with advanced 3D printing and rapid prototyping solutions, enabling precise fabrication of custom airframe mounts, sensor housings, and structural components for our aerial platforms.",
       hardwareProvided: [
-        { name: "3D Printing", category: "Component Fabrication" },
+        { name: "Rapid 3D Printing & Prototyping", category: "Additive Manufacturing" },
+        { name: "Custom Sensor & Payload Mounts", category: "Component Fabrication" },
+        { name: "Structural Airframe Enclosures", category: "Prototyping & Tooling" },
+      ],
+    },
+    {
+      id: "ansys",
+      name: "ANSYS",
+      tier: "Official Simulation Partner",
+      role: "CFD Licences & Aerodynamics",
+      logo: "/images/sponsors/ansys_logo.jpg",
+      website: "https://www.ansys.com",
+      summary:
+        "ANSYS provides AARG with high-performance CFD and engineering simulation licences, empowering our team to execute advanced fluid dynamics and structural analyses to optimize aerodynamic efficiency across all competition platforms.",
+      hardwareProvided: [
+        { name: "ANSYS Fluent CFD Suite", category: "Aerodynamic Simulation" },
+        { name: "Academic Engineering Licences", category: "Software & Compute" },
+        { name: "Structural FEA & Thermal Analysis", category: "Design Validation" },
       ],
     },
   ],
